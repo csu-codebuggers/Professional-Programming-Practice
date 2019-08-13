@@ -3,11 +3,11 @@ import java.io.Serializable;
 
 @SuppressWarnings("serial")
 public class book implements Serializable {
-	//aaa
-	private String TITLE;
-	private String AUTHOR;
-	private String CALLNO;
-	private int ID;
+	
+	private String title;  // changed to lowercase
+	private String author; // changed to lowercase
+	private String callNo; // matched as camelBlack format
+	private int id; // changed to lowercase
 	
 	private enum STATE { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };
 	private STATE State;
