@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings("serial")
-public class library implements Serializable {
+public class Library implements Serializable {// Changed the class name from 'library' to 'Library'
 	
 	private static final String libraryFile = "library.obj";
 	private static final int loanLimit = 2;
@@ -23,11 +23,11 @@ public class library implements Serializable {
 	private static final double maxFinesOwed = 1.0;
 	private static final double damageFee = 2.0;
 	
-	private static library SeLf;
-	private int BOOK_ID;
-	private int MEMBER_ID;
-	private int LOAN_ID;
-	private Date LOAN_DATE;
+	private static library self;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan
+	private int bookId;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan
+	private int memberId;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan
+	private int loanId;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan
+	private Date loanDate;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan
 	
 	private Map<Integer, book> CATALOG;
 	private Map<Integer, member> MEMBERS;
