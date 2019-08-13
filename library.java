@@ -42,7 +42,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 		LOANS = new HashMap<>();
 		CURRENT_LOANS = new HashMap<>();
 		DAMAGED_BOOKS = new HashMap<>();
-		BOOK_ID = 1;
+		bookId = 1;
 		MEMBER_ID = 1;		
 		LOAN_ID = 1;		
 	}
@@ -84,7 +84,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 
 	
 	public int BookID() {
-		return BOOK_ID;
+		return book;
 	}
 	
 	
@@ -94,7 +94,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 	
 	
 	private int NextBID() {
-		return BOOK_ID++;
+		return bookId++;
 	}
 
 	
@@ -187,7 +187,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 	}
 	
 	
-	public loan LOAN_BY_BOOK_ID(int bookId) {
+	public loan LOAN_BY_bookId(int bookId) {
 		if (CURRENT_LOANS.containsKey(bookId)) {
 			return CURRENT_LOANS.get(bookId);
 		}
