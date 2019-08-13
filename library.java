@@ -43,7 +43,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 		CURRENT_LOANS = new HashMap<>();
 		DAMAGED_BOOKS = new HashMap<>();
 		bookId = 1;
-		MEMBER_ID = 1;		
+		memberId = 1;		
 		LOAN_ID = 1;		
 	}
 
@@ -89,7 +89,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 	
 	
 	public int MemberID() {
-		return MEMBER_ID;
+		return memberId;
 	}
 	
 	
@@ -99,7 +99,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 
 	
 	private int NextMID() {
-		return MEMBER_ID++;
+		return memberId++;
 	}
 
 	
