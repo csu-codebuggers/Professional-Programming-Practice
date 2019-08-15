@@ -32,14 +32,14 @@ public class PayFineUI {
 			switch (state) {  //Changed StAtE to state
 			
 			case READY:
-				String Mem_Str = input("Swipe member card (press <enter> to cancel): ");
-				if (Mem_Str.length() == 0) {
+				String memStr = input("Swipe member card (press <enter> to cancel): ");  //changed Mem_Str to memStr
+				if (memStr.length() == 0) {  //changed Mem_Str to memStr
 					control.CaNcEl();  //Changed CoNtRoL variable to control
 					break;
 				}
 				try {
-					int Member_ID = Integer.valueOf(Mem_Str).intValue();
-					control.Card_Swiped(Member_ID);  //Changed CoNtRoL variable to control
+					int memberId = Integer.valueOf(memStr).intValue();  //changed Mem_Str to memStr and Member_ID to memberId
+					control.Card_Swiped(memberId);  //Changed CoNtRoL variable to control and Member_ID to memberId
 				}
 				catch (NumberFormatException e) {
 					output("Invalid memberId");
@@ -47,21 +47,21 @@ public class PayFineUI {
 				break;
 				
 			case PAYING:
-				double AmouNT = 0;
-				String Amt_Str = input("Enter amount (<Enter> cancels) : ");
-				if (Amt_Str.length() == 0) {
+				double amount = 0;  //changed AmouNT to amount
+				String amtStr = input("Enter amount (<Enter> cancels) : ");  //changed Amt_Str to amtStr
+				if (amtStr.length() == 0) {
 					control.CaNcEl();  //Changed CoNtRoL variable to control
 					break;
 				}
 				try {
-					AmouNT = Double.valueOf(Amt_Str).doubleValue();
+					amount = Double.valueOf(amtStr).doubleValue();  //changed AmouNT to amount
 				}
 				catch (NumberFormatException e) {}
-				if (AmouNT <= 0) {
+				if (amount <= 0) {  //changed AmouNT to amount
 					output("Amount must be positive");
 					break;
 				}
-				control.PaY_FiNe(AmouNT);  //Changed CoNtRoL variable to control
+				control.PaY_FiNe(amount);  //Changed CoNtRoL variable to control and changed AmouNT to amount
 				break;
 								
 			case CANCELLED:
