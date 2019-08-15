@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class PayFineUI {
 
 
-	public static enum UiState { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };  //changed UI_State to UiState
+	public static enum UiState {INITIALISED, READY, PAYING, COMPLETED, CANCELLED};  //changed UI_State to UiState and changed alignment
 
 	private PayFineControl control; //Changed CoNtRoL variable to control
 	private Scanner input;
