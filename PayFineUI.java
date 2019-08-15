@@ -12,19 +12,19 @@ public class PayFineUI {
 
 	
 	public PayFineUI(PayFineControl control) {
-		this.CoNtRoL = control; //Changed CoNtRoL variable to control
+		this.control = control; //Changed CoNtRoL variable to control
 		input = new Scanner(System.in);
 		state = UiState.INITIALISED;  //Changed UI_STATE to UiState and StAtE to state
 		control.Set_UI(this);
 	}
 	
 	
-	public void Set_State(UiState state) {   //changed UI_State to UiState
+	public void setState(UiState state) {   //changed UI_State to UiState and method Set_State to setState
 		this.state = state;  //Changed StAtE to state
 	}
 
 
-	public void RuN() {
+	public void run() {  //changed method RuN to run
 		output("Pay Fine Use Case UI\n");
 		
 		while (true) {
@@ -34,12 +34,12 @@ public class PayFineUI {
 			case READY:
 				String memStr = input("Swipe member card (press <enter> to cancel): ");  //changed Mem_Str to memStr
 				if (memStr.length() == 0) {  //changed Mem_Str to memStr
-					control.CaNcEl();  //Changed CoNtRoL variable to control
+					control.cancel();  //Changed CoNtRoL variable to control and method CaNcEl to cancel
 					break;
 				}
 				try {
 					int memberId = Integer.valueOf(memStr).intValue();  //changed Mem_Str to memStr and Member_ID to memberId
-					control.Card_Swiped(memberId);  //Changed CoNtRoL variable to control and Member_ID to memberId
+					control.cardSwiped(memberId);  //Changed CoNtRoL variable to control and Member_ID to memberId and Card_Swiped to cardSwiped
 				}
 				catch (NumberFormatException e) {
 					output("Invalid memberId");
@@ -50,7 +50,7 @@ public class PayFineUI {
 				double amount = 0;  //changed AmouNT to amount
 				String amtStr = input("Enter amount (<Enter> cancels) : ");  //changed Amt_Str to amtStr
 				if (amtStr.length() == 0) {
-					control.CaNcEl();  //Changed CoNtRoL variable to control
+					control.cancel();  //Changed CoNtRoL variable to control and method CaNcEl to cancel
 					break;
 				}
 				try {
@@ -61,7 +61,7 @@ public class PayFineUI {
 					output("Amount must be positive");
 					break;
 				}
-				control.PaY_FiNe(amount);  //Changed CoNtRoL variable to control and changed AmouNT to amount
+				control.payFine(amount);  //Changed CoNtRoL variable to control and changed AmouNT to amount and method PaY_FiNe to payFine
 				break;
 								
 			case CANCELLED:
@@ -74,7 +74,7 @@ public class PayFineUI {
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state :" + StAtE);			
+				throw new RuntimeException("FixBookUI : unhandled state :" + state);	//Changed StAtE to state		
 			
 			}		
 		}		
@@ -92,7 +92,7 @@ public class PayFineUI {
 	}	
 			
 
-	public void DiSplAY(Object object) {
+	public void display(Object object) {  //changed DiSplAY to display
 		output(object);
 	}
 
