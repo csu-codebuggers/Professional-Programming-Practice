@@ -49,30 +49,30 @@ public class Library implements Serializable {// Changed the class name from 'li
 
 	
 	public static synchronized library INSTANCE() {		
-		if (SeLf == null) {
+		if (self == null) {
 			Path PATH = Paths.get(libraryFile);			
 			if (Files.exists(PATH)) {	
 				try (ObjectInputStream LiF = new ObjectInputStream(new FileInputStream(libraryFile));) {
 			    
-					SeLf = (library) LiF.readObject();
-					Calendar.INSTANCE().Set_dATE(SeLf.LOAN_DATE);
+					self = (library) LiF.readObject();
+					Calendar.INSTANCE().Set_dATE(self.LOAN_DATE);
 					LiF.close();
 				}
 				catch (Exception e) {
 					throw new RuntimeException(e);
 				}
 			}
-			else SeLf = new library();
+			else self = new library();
 		}
-		return SeLf;
+		return self;
 	}
 
 	
 	public static synchronized void SAVE() {
-		if (SeLf != null) {
-			SeLf.LOAN_DATE = Calendar.INSTANCE().Date();
+		if (self != null) {
+			self.LOAN_DATE = Calendar.INSTANCE().Date();
 			try (ObjectOutputStream LoF = new ObjectOutputStream(new FileOutputStream(libraryFile));) {
-				LoF.writeObject(SeLf);
+				LoF.writeObject(self);
 				LoF.flush();
 				LoF.close();	
 			}
