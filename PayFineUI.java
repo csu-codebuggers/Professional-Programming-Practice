@@ -4,23 +4,23 @@ import java.util.Scanner;
 public class PayFineUI {
 
 
-	public static enum UI_STATE { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
+	public static enum UiState { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };  //changed UI_State to UiState
 
-	private PayFineControl CoNtRoL;
+	private PayFineControl control; //Changed CoNtRoL variable to control
 	private Scanner input;
-	private UI_STATE StAtE;
+	private UiState state;  //Changed UI_STATE to UiState and StAtE to state
 
 	
 	public PayFineUI(PayFineControl control) {
-		this.CoNtRoL = control;
+		this.CoNtRoL = control; //Changed CoNtRoL variable to control
 		input = new Scanner(System.in);
-		StAtE = UI_STATE.INITIALISED;
+		state = UiState.INITIALISED;  //Changed UI_STATE to UiState and StAtE to state
 		control.Set_UI(this);
 	}
 	
 	
-	public void Set_State(UI_STATE state) {
-		this.StAtE = state;
+	public void Set_State(UiState state) {   //changed UI_State to UiState
+		this.state = state;  //Changed StAtE to state
 	}
 
 
