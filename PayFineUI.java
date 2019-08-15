@@ -15,7 +15,7 @@ public class PayFineUI {
 		this.control = control; //Changed CoNtRoL variable to control
 		input = new Scanner(System.in);
 		state = UiState.INITIALISED;  //Changed UI_STATE to UiState and StAtE to state
-		control.Set_UI(this);
+		control.setUI(this);
 	}
 	
 	
