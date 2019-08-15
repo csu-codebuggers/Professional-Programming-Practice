@@ -84,22 +84,22 @@ public class Library implements Serializable {// Changed the class name from 'li
 
 	
 	public int BookID() {
-		return book;
+		return bookId;// Changed variable name from BOOK_ID to bookId by Sudeep Maharjan
 	}
 	
 	
 	public int MemberID() {
-		return memberId;
+		return memberId;// Changed variable name from MEMBER_ID to memberId by Sudeep Maharjan
 	}
 	
 	
 	private int NextBID() {
-		return bookId++;
+		return bookId++;// Changed variable name from BOOK_ID to bookId by Sudeep Maharjan
 	}
 
 	
 	private int NextMID() {
-		return memberId++;
+		return memberId++;// Changed variable name from Member_Id to memberId by Sudeep Maharjan
 	}
 
 	
