@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings("serial")
-public class library implements Serializable {
+public class Library implements Serializable {// Changed the class name from 'library' to 'Library'
 	
 	private static final String libraryFile = "library.obj";
 	private static final int loanLimit = 2;
@@ -23,11 +23,11 @@ public class library implements Serializable {
 	private static final double maxFinesOwed = 1.0;
 	private static final double damageFee = 2.0;
 	
-	private static library SeLf;
-	private int BOOK_ID;
-	private int MEMBER_ID;
-	private int LOAN_ID;
-	private Date LOAN_DATE;
+	private static library self;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan
+	private int bookId;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan
+	private int memberId;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan
+	private int loanId;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan
+	private Date loanDate;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan
 	
 	private Map<Integer, book> CATALOG;
 	private Map<Integer, member> MEMBERS;
@@ -42,9 +42,9 @@ public class library implements Serializable {
 		LOANS = new HashMap<>();
 		CURRENT_LOANS = new HashMap<>();
 		DAMAGED_BOOKS = new HashMap<>();
-		BOOK_ID = 1;
-		MEMBER_ID = 1;		
-		LOAN_ID = 1;		
+		bookId = 1;
+		memberId = 1;		
+		loanId = 1;	// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
 	}
 
 	
@@ -84,27 +84,27 @@ public class library implements Serializable {
 
 	
 	public int BookID() {
-		return BOOK_ID;
+		return bookId;// Changed variable name from BOOK_ID to bookId by Sudeep Maharjan
 	}
 	
 	
 	public int MemberID() {
-		return MEMBER_ID;
+		return memberId;// Changed variable name from MEMBER_ID to memberId by Sudeep Maharjan
 	}
 	
 	
 	private int NextBID() {
-		return BOOK_ID++;
+		return bookId++;// Changed variable name from BOOK_ID to bookId by Sudeep Maharjan
 	}
 
 	
 	private int NextMID() {
-		return MEMBER_ID++;
+		return memberId++;// Changed variable name from Member_Id to memberId by Sudeep Maharjan
 	}
 
 	
 	private int NextLID() {
-		return LOAN_ID++;
+		return loanId++;// Changed variable name from Loan_id to loanId by Sudeep Maharjan
 	}
 
 	
@@ -187,7 +187,7 @@ public class library implements Serializable {
 	}
 	
 	
-	public loan LOAN_BY_BOOK_ID(int bookId) {
+	public loan LOAN_BY_bookId(int bookId) {
 		if (CURRENT_LOANS.containsKey(bookId)) {
 			return CURRENT_LOANS.get(bookId);
 		}
