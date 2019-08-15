@@ -44,7 +44,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 		DAMAGED_BOOKS = new HashMap<>();
 		bookId = 1;
 		memberId = 1;		
-		LOAN_ID = 1;		
+		loanId = 1;	// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
 	}
 
 	
@@ -104,7 +104,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 
 	
 	private int NextLID() {
-		return LOAN_ID++;
+		return loanId++;// Changed variable name from Loan_id to loanId by Sudeep Maharjan
 	}
 
 	
