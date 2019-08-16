@@ -47,7 +47,6 @@ public class Library implements Serializable {// Changed the class name from 'li
 		loanId = 1;	// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
 	}
 
-	
 	public static synchronized Library INSTANCE() {		
 		if (self == null) {
 			Path PATH = Paths.get(libraryFile);			
@@ -83,42 +82,42 @@ public class Library implements Serializable {// Changed the class name from 'li
 	}
 
 	
-	public int BookID() {
+	public int getBookID() { //Changed the method name to more meaningful By Sudeep Maharjan
 		return bookId;// Changed variable name from BOOK_ID to bookId by Sudeep Maharjan
 	}
 	
 	
-	public int MemberID() {
+	public int getMemberID() { //Changed the method name to more meaningful By Sudeep Maharjan
 		return memberId;// Changed variable name from MEMBER_ID to memberId by Sudeep Maharjan
 	}
 	
 	
-	private int NextBID() {
-		return bookId++;// Changed variable name from BOOK_ID to bookId by Sudeep Maharjan
+	private int getNextBID() { //Changed the method name to more meaningful By Sudeep Maharjan
+		return bookId++;// Change variable name from BOOK_ID to bookId by Sudeep Maharjan
 	}
 
 	
-	private int NextMID() {
+	private int getNextMID() { //Changed the method name to more meaningful By Sudeep Maharjan
 		return memberId++;// Changed variable name from Member_Id to memberId by Sudeep Maharjan
 	}
 
 	
-	private int NextLID() {
+	private int getNextLID() { //Changed the method name to more meaningful By Sudeep Maharjan
 		return loanId++;// Changed variable name from Loan_id to loanId by Sudeep Maharjan
 	}
 
 	
-	public List<member> members() {		
+	public List<member> getMembers() { //Changed the method name to more meaningful By Sudeep Maharjan		
 		return new ArrayList<member>(members.values()); 
 	}
 
 
-	public List<book> BOOKS() {		
+	public List<book> getBooks() {	//Changed the method name to more meaningful By Sudeep Maharjan	
 		return new ArrayList<book>(catalog.values()); 
 	}
 
 
-	public List<loan> CurrentLoans() {
+	public List<loan> getCurrentLoans() { //Changed the method name to more meaningful By Sudeep Maharjan
 		return new ArrayList<loan>(currentLoans.values());
 	}
 
