@@ -23,7 +23,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 	private static final double maxFinesOwed = 1.0;
 	private static final double damageFee = 2.0;
 	
-	private static library self;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan
+	private static Library self;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan
 	private int bookId;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan
 	private int memberId;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan
 	private int loanId;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan
@@ -36,7 +36,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 	private Map<Integer, book> damagedBooks;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
 	
 
-	private library() {
+	private Library() {
 		catalog = new HashMap<>();// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
 		members = new HashMap<>();// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
 		loans = new HashMap<>();// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
@@ -48,13 +48,13 @@ public class Library implements Serializable {// Changed the class name from 'li
 	}
 
 	
-	public static synchronized library INSTANCE() {		
+	public static synchronized Library INSTANCE() {		
 		if (self == null) {
 			Path PATH = Paths.get(libraryFile);			
 			if (Files.exists(PATH)) {	
 				try (ObjectInputStream LiF = new ObjectInputStream(new FileInputStream(libraryFile));) {
 			    
-					self = (library) LiF.readObject();
+					self = (Library) LiF.readObject();
 					Calendar.INSTANCE().Set_dATE(self.LOAN_DATE);
 					LiF.close();
 				}
@@ -62,7 +62,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 					throw new RuntimeException(e);
 				}
 			}
-			else self = new library();
+			else self = new Library();
 		}
 		return self;
 	}
