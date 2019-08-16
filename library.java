@@ -16,12 +16,12 @@ import java.util.Map;
 @SuppressWarnings("serial")
 public class Library implements Serializable {// Changed the class name from 'library' to 'Library'
 	
-	private static final String libraryFile = "library.obj";
-	private static final int loanLimit = 2;
-	private static final int loanPeriod = 2;
-	private static final double finePerDay = 1.0;
-	private static final double maxFinesOwed = 1.0;
-	private static final double damageFee = 2.0;
+	private static final String LIBRARY_FILE = "library.obj"; // Changed the name of constants to uppercase and underscore seprated
+	private static final int LOAN_LIMIT = 2; // Changed the name of constants to uppercase and underscore seprated
+	private static final int LOAN_PERIOD = 2; // Changed the name of constants to uppercase and underscore seprated
+	private static final double FINE_PER_DAY = 1.0; // Changed the name of constants to uppercase and underscore seprated
+	private static final double MAX_FINES_OWED = 1.0; // Changed the name of constants to uppercase and underscore seprated
+	private static final double DAMAGE_FEE = 2.0; // Changed the name of constants to uppercase and underscore seprated
 	
 	private static Library self;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan
 	private int bookId;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan
@@ -49,9 +49,9 @@ public class Library implements Serializable {// Changed the class name from 'li
 
 	public static synchronized Library INSTANCE() {		
 		if (self == null) {
-			Path PATH = Paths.get(libraryFile);			
+			Path PATH = Paths.get(LIBRARY_FILE);			
 			if (Files.exists(PATH)) {	
-				try (ObjectInputStream LiF = new ObjectInputStream(new FileInputStream(libraryFile));) {
+				try (ObjectInputStream LiF = new ObjectInputStream(new FileInputStream(LIBRARY_FILE));) {
 			    
 					self = (Library) LiF.readObject();
 					Calendar.INSTANCE().Set_dATE(self.LOAN_DATE);
@@ -70,7 +70,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 	public static synchronized void SAVE() {
 		if (self != null) {
 			self.LOAN_DATE = Calendar.INSTANCE().Date();
-			try (ObjectOutputStream LoF = new ObjectOutputStream(new FileOutputStream(libraryFile));) {
+			try (ObjectOutputStream LoF = new ObjectOutputStream(new FileOutputStream(LIBRARY_FILE));) {
 				LoF.writeObject(self);
 				LoF.flush();
 				LoF.close();	
@@ -151,15 +151,15 @@ public class Library implements Serializable {// Changed the class name from 'li
 
 	
 	public int getLoanLimit() { //Changed the method name to more meaningful By Sudeep Maharjan
-		return loanLimit;
+		return LOAN_LIMIT;
 	}
 
 	
 	public boolean checkMemberCanBorrow(member member) { //Changed the method name to more meaningful By Sudeep Maharjan	
-		if (member.Number_Of_Current_Loans() == loanLimit ) 
+		if (member.Number_Of_Current_Loans() == LOAN_LIMIT ) 
 			return false;
 				
-		if (member.Fines_OwEd() >= maxFinesOwed) 
+		if (member.Fines_OwEd() >= MAX_FINES_OWED) 
 			return false;
 				
 		for (loan loan : member.GeT_LoAnS()) 
@@ -171,12 +171,12 @@ public class Library implements Serializable {// Changed the class name from 'li
 
 	
 	public int getLoansRemaining(member member) { //Changed the method name to more meaningful By Sudeep Maharjan	
-		return loanLimit - member.Number_Of_Current_Loans();
+		return LOAN_LIMIT - member.Number_Of_Current_Loans();
 	}
 
 	
 	public loan loanIssue(book book, member member) { //Changed the method name to more meaningful By Sudeep Maharjan	
-		Date dueDate = Calendar.INSTANCE().Due_Date(loanPeriod);
+		Date dueDate = Calendar.INSTANCE().Due_Date(LOAN_PERIOD);
 		loan loan = new loan(NextLID(), book, member, dueDate);
 		member.Take_Out_Loan(loan);
 		book.Borrow();
@@ -197,7 +197,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 	public double calculateOverDueFine(loan loan) { //Changed the method name to more meaningful By Sudeep Maharjan	
 		if (loan.OVer_Due()) {
 			long daysOverDue = Calendar.INSTANCE().Get_Days_Difference(loan.Get_Due_Date());
-			double fine = daysOverDue * finePerDay;
+			double fine = daysOverDue * FINE_PER_DAY;
 			return fine;
 		}
 		return 0.0;		
@@ -214,7 +214,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 		member.dIsChArGeLoAn(currentLoan);
 		book.Return(isDamaged);
 		if (isDamaged) {
-			member.Add_Fine(damageFee);
+			member.Add_Fine(DAMAGE_FEE);
 			damagedBooks.put(book.ID(), book);
 		}
 		currentLoan.DiScHaRgE();
