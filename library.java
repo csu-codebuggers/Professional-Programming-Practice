@@ -32,16 +32,16 @@ public class Library implements Serializable {// Changed the class name from 'li
 	private Map<Integer, book> catalog; // Changed the variable name to lowercase
 	private Map<Integer, member> members; // Changed the variable name to lowercase
 	private Map<Integer, loan> loans; // Changed the variable name to lowercase
-	private Map<Integer, loan> current_loans;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
-	private Map<Integer, book> damaged_books;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
+	private Map<Integer, loan> currentLoans;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
+	private Map<Integer, book> damagedBooks;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
 	
 
 	private library() {
 		catalog = new HashMap<>();// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
 		members = new HashMap<>();// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
 		loans = new HashMap<>();// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
-		current_loans = new HashMap<>();// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
-		damaged_books = new HashMap<>();// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
+		currentLoans = new HashMap<>();// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
+		damagedBooks = new HashMap<>();// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
 		bookId = 1;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
 		memberId = 1;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan			
 		loanId = 1;	// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
@@ -119,7 +119,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 
 
 	public List<loan> CurrentLoans() {
-		return new ArrayList<loan>(current_loans.values());
+		return new ArrayList<loan>(currentLoans.values());
 	}
 
 
@@ -182,14 +182,14 @@ public class Library implements Serializable {// Changed the class name from 'li
 		member.Take_Out_Loan(loan);
 		book.Borrow();
 		loans.put(loan.ID(), loan);
-		current_loans.put(book.ID(), loan);
+		currentLoans.put(book.ID(), loan);
 		return loan;
 	}
 	
 	
 	public loan LOAN_BY_bookId(int bookId) {
-		if (current_loans.containsKey(bookId)) {
-			return current_loans.get(bookId);
+		if (currentLoans.containsKey(bookId)) {
+			return currentLoans.get(bookId);
 		}
 		return null;
 	}
@@ -216,24 +216,24 @@ public class Library implements Serializable {// Changed the class name from 'li
 		book.Return(isDamaged);
 		if (isDamaged) {
 			member.Add_Fine(damageFee);
-			damaged_books.put(book.ID(), book);
+			damagedBooks.put(book.ID(), book);
 		}
 		currentLoan.DiScHaRgE();
-		current_loans.remove(book.ID());
+		currentLoans.remove(book.ID());
 	}
 
 
 	public void checkCurrentLoans() {
-		for (loan loan : current_loans.values()) {
+		for (loan loan : currentLoans.values()) {
 			loan.checkOverDue();
 		}		
 	}
 
 
 	public void Repair_BOOK(book currentBook) {
-		if (damaged_books.containsKey(currentBook.ID())) {
+		if (damagedBooks.containsKey(currentBook.ID())) {
 			currentBook.Repair();
-			damaged_books.remove(currentBook.ID());
+			damagedBooks.remove(currentBook.ID());
 		}
 		else {
 			throw new RuntimeException("Library: repairBook: book is not damaged");
