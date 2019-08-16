@@ -122,35 +122,35 @@ public class Library implements Serializable {// Changed the class name from 'li
 	}
 
 
-	public member Add_mem(String lastName, String firstName, String email, int phoneNo) {		
+	public member addMember(String lastName, String firstName, String email, int phoneNo) {	//Changed the method name to more meaningful By Sudeep Maharjan
 		member member = new member(lastName, firstName, email, phoneNo, NextMID());
 		members.put(member.GeT_ID(), member);		
 		return member;
 	}
 
 	
-	public book Add_book(String a, String t, String c) {		
+	public book addBook(String a, String t, String c) {	//Changed the method name to more meaningful By Sudeep Maharjan	
 		book b = new book(a, t, c, NextBID());
 		catalog.put(b.ID(), b);		
 		return b;
 	}
 
 	
-	public member MEMBER(int memberId) {
+	public member checkMember(int memberId) { //Changed the method name to more meaningful By Sudeep Maharjan
 		if (members.containsKey(memberId)) 
 			return members.get(memberId);
 		return null;
 	}
 
 	
-	public book Book(int bookId) {
+	public book checkBook(int bookId) { //Changed the method name to more meaningful By Sudeep Maharjan
 		if (catalog.containsKey(bookId)) 
 			return catalog.get(bookId);		
 		return null;
 	}
 
 	
-	public int LOAN_LIMIT() {
+	public int getLoanLimit() { //Changed the method name to more meaningful By Sudeep Maharjan
 		return loanLimit;
 	}
 
