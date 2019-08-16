@@ -7,12 +7,12 @@ public class BorrowBookUI {
 	public static enum UiState { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
 
 	private BorrowBookControl control; // change CONTROL to control
-	private Scanner scanner;
+	private Scanner scanner; // changed scanner object name from input to scanner
 	private UiState state; // chnage StaTe to state
 
 	
 	public BorrowBookUI(BorrowBookControl control) {
-		this.CONTROL = control;
+		this.control = control;
 		scanner = new Scanner(System.in);
 		state = UiState.INITIALISED;
 		control.setUI(this);
@@ -29,8 +29,8 @@ public class BorrowBookUI {
 		System.out.println(object);
 	}
 	
-			
-	public void Set_State(UiState state) {
+	// function name changed from Set_State to setState		
+	public void setState(UiState state) {
 		this.state = state;
 	}
 
@@ -109,8 +109,8 @@ public class BorrowBookUI {
 		}		
 	}
 
-
-	public void Display(Object object) {
+	// function name changed from Display to display
+	public void display(Object object) {
 		output(object);		
 	}
 
