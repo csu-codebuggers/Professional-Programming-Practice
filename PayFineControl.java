@@ -19,7 +19,7 @@ public class PayFineControl {
 			throw new RuntimeException("PayFineControl: cannot call setUI except in INITIALISED state");
 		}	
 		this.ui = ui; //changed Ui to ui
-		ui.setState(PayFineUI.UI_STATE.READY);  //changed Set_State to setState
+		ui.setState(PayFineUI.uiState.READY);  //changed Set_State to setState and UI_STATE to uiState
 		state = controlState.READY;	//changed StAtE to state and CONTROL_STATE to controlState	
 	}
 
@@ -35,13 +35,13 @@ public class PayFineControl {
 			return;
 		}
 		ui.display(member.toString()); //changed MeMbEr to member and Ui to ui and DiSplAY to display
-		Ui.Set_State(PayFineUI.UI_STATE.PAYING);  //changed Ui to ui
+		Ui.Set_State(PayFineUI.uiState.PAYING);  //changed Ui to ui and UI_STATE to uiState
 		state = controlState.PAYING; //changed StAtE to state and CONTROL_STATE to controlState
 	}
 	
 	
 	public void cancel() { //changed CaNcEl to cancel
-		ui.Set_State(PayFineUI.UI_STATE.CANCELLED);  //changed Ui to ui
+		ui.Set_State(PayFineUI.uiState.CANCELLED);  //changed Ui to ui and UI_STATE to uiState
 		state = controlState.CANCELLED; //changed StAtE to state and CONTROL_STATE to controlState
 	}
 
@@ -55,7 +55,7 @@ public class PayFineControl {
 			ui.display(String.format("Change: $%.2f", change)); //changed ChAnGe to change and Ui to ui and DiSplAY to display
 		}
 		ui.display(member.toString()); //changed Ui to ui and MeMbEr to member and DiSplAY to display
-		ui.Set_State(PayFineUI.UI_STATE.COMPLETED); //changed Ui to ui
+		ui.Set_State(PayFineUI.uiState.COMPLETED); //changed Ui to ui and UI_STATE to uiState
 		state = controlState.COMPLETED;  //changed StAtE to state and CONTROL_STATE to controlState
 		return change;
 	}
