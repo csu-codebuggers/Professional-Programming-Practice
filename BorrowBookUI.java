@@ -57,7 +57,7 @@ public class BorrowBookUI {
 				try {
 					// local variable Member_ID changed to memberId
 					int memberId = Integer.valueOf(memberIdString).intValue();
-					control.Swiped(memberId);
+					control.cardSwiped(memberId); // proper function pointed
 				}
 				catch (NumberFormatException e) {
 					output("Invalid Member Id");
@@ -75,12 +75,12 @@ public class BorrowBookUI {
 				// local variable Book_Str changed to bookIdString
 				String bookIdString = input("Scan Book (<enter> completes): ");
 				if (bookIdString.length() == 0) {
-					control.Complete();
+					control.complete(); 
 					break;
 				}
 				try {
 					int bookId = Integer.valueOf(bookIdString).intValue();
-					control.Scanned(bookId);
+					control.bookScanned(bookId); // proper function pointed
 					
 				} catch (NumberFormatException e) {
 					output("Invalid Book Id");
@@ -95,7 +95,7 @@ public class BorrowBookUI {
 					control.cancel();
 					
 				} else {
-					control.Commit_LOans();
+					control.commitLoans(); // proper function pointed
 					input("Press <any key> to complete ");
 				}
 				break;
