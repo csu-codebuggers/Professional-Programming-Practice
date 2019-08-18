@@ -156,16 +156,19 @@ public class Library implements Serializable {// Changed the class name from 'li
 
 	
 	public boolean checkMemberCanBorrow(member member) { //Changed the method name to more meaningful By Sudeep Maharjan	
-		if (member.Number_Of_Current_Loans() == LOAN_LIMIT ) 
+		if (member.Number_Of_Current_Loans() == LOAN_LIMIT ){
 			return false;
+		}
 				
-		if (member.Fines_OwEd() >= MAX_FINES_OWED) 
+		if (member.Fines_OwEd() >= MAX_FINES_OWED) {
 			return false;
-				
-		for (loan loan : member.GeT_LoAnS()) 
-			if (loan.OVer_Due()) 
+		}
+
+		for (loan loan : member.GeT_LoAnS()) {
+			if (loan.OVer_Due()) {
 				return false;
-			
+			}
+		}
 		return true;
 	}
 
@@ -228,7 +231,6 @@ public class Library implements Serializable {// Changed the class name from 'li
 		}		
 	}
 
-
 	public void repairBook(book currentBook) {//Changed the method name to more meaningful By Sudeep Maharjan	
 		if (damagedBooks.containsKey(currentBook.ID())) {
 			currentBook.Repair();
@@ -239,6 +241,5 @@ public class Library implements Serializable {// Changed the class name from 'li
 		}
 		
 	}
-	
 	
 }
