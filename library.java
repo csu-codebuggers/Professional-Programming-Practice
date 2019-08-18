@@ -130,7 +130,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 
 	
 	public Book addBook(String a, String t, String c) {	//Changed the method name to more meaningful By Sudeep Maharjan	
-		Book b = new book(a, t, c, NextBID());
+		Book b = new book(a, t, c, NextBID()); // Changed the class name from lowercase to uppercase
 		catalog.put(b.ID(), b);		
 		return b;
 	}
