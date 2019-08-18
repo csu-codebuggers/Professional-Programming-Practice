@@ -5,14 +5,28 @@ public class BorrowBookControl {
 	
 	private BorrowBookUI UI;
 	
-	private library library; // variable name changed from LIBRARY to library
-	private member member; // variable name changed from M to member
+	// variable name changed from LIBRARY to library
+	// Class name changed from library to Library
+	private Library library; 
+	
+	// variable name changed from M to member
+	// Class name changed from member to Member
+	private Member member; 
+
 	private enum ControlState { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
 	private ControlState state; // variable name changed from State to state
 	
-	private List<book> pendingBooks; // variable name changed from PENDING to pendingBooks
-	private List<loan> completed; // variable name changed from COMPLETED to completed
-	private book book; // variable name Book changed to book
+	// variable name changed from PENDING to pendingBooks
+	// class name changed from book to Book
+	private List<Book> pendingBooks; 
+
+	// variable name changed from COMPLETED to completed
+	// class name changed from loan to Loan
+	private List<Loan> completed; 
+	
+	// variable name Book changed to book
+	// Class name changed from book to Book
+	private Book book; 
 	
 	
 	public BorrowBookControl() {
