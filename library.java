@@ -122,28 +122,28 @@ public class Library implements Serializable {// Changed the class name from 'li
 	}
 
 
-	public member addMember(String lastName, String firstName, String email, int phoneNo) {	//Changed the method name to more meaningful By Sudeep Maharjan
-		member member = new member(lastName, firstName, email, phoneNo, NextMID());
+	public Member addMember(String lastName, String firstName, String email, int phoneNo) {	//Changed the method name to more meaningful By Sudeep Maharjan
+		Member member = new member(lastName, firstName, email, phoneNo, NextMID());
 		members.put(member.GeT_ID(), member);		
 		return member;
 	}
 
 	
-	public book addBook(String a, String t, String c) {	//Changed the method name to more meaningful By Sudeep Maharjan	
-		book b = new book(a, t, c, NextBID());
+	public Book addBook(String a, String t, String c) {	//Changed the method name to more meaningful By Sudeep Maharjan	
+		Book b = new book(a, t, c, NextBID());
 		catalog.put(b.ID(), b);		
 		return b;
 	}
 
 	
-	public member checkMember(int memberId) { //Changed the method name to more meaningful By Sudeep Maharjan
+	public Member checkMember(int memberId) { //Changed the method name to more meaningful By Sudeep Maharjan
 		if (members.containsKey(memberId)) 
 			return members.get(memberId);
 		return null;
 	}
 
 	
-	public book checkBook(int bookId) { //Changed the method name to more meaningful By Sudeep Maharjan
+	public Book checkBook(int bookId) { //Changed the method name to more meaningful By Sudeep Maharjan
 		if (catalog.containsKey(bookId)) 
 			return catalog.get(bookId);		
 		return null;
@@ -178,7 +178,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 	}
 
 	
-	public loan loanIssue(Book book, Member member) { //Changed the method name to more meaningful By Sudeep Maharjan	
+	public Loan loanIssue(Book book, Member member) { //Changed the method name to more meaningful By Sudeep Maharjan	
 		Date dueDate = Calendar.INSTANCE().Due_Date(LOAN_PERIOD);
 		loan loan = new loan(NextLID(), book, member, dueDate);
 		member.Take_Out_Loan(loan);
@@ -189,7 +189,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 	}
 	
 	
-	public loan getLoanByBookId(int bookId) { //Changed the method name to more meaningful By Sudeep Maharjan	
+	public Loan getLoanByBookId(int bookId) { //Changed the method name to more meaningful By Sudeep Maharjan	
 		if (currentLoans.containsKey(bookId)) {
 			return currentLoans.get(bookId);
 		}
@@ -226,7 +226,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 
 
 	public void checkCurrentLoans() {//Changed the method name to more meaningful By Sudeep Maharjan	
-		for (loan loan : currentLoans.values()) {
+		for (Loan loan : currentLoans.values()) {
 			loan.checkOverDue();
 		}		
 	}
