@@ -4,42 +4,42 @@ import java.util.Scanner;
 public class PayFineUI {
 
 
-	public static enum UI_STATE { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
+	public static enum UiState {INITIALISED, READY, PAYING, COMPLETED, CANCELLED};  //changed UI_State to UiState and changed alignment
 
-	private PayFineControl CoNtRoL;
+	private PayFineControl control; //Changed CoNtRoL variable to control
 	private Scanner input;
-	private UI_STATE StAtE;
+	private UiState state;  //Changed UI_STATE to UiState and StAtE to state
 
 	
 	public PayFineUI(PayFineControl control) {
-		this.CoNtRoL = control;
+		this.control = control; //Changed CoNtRoL variable to control
 		input = new Scanner(System.in);
-		StAtE = UI_STATE.INITIALISED;
-		control.Set_UI(this);
+		state = UiState.INITIALISED;  //Changed UI_STATE to UiState and StAtE to state
+		control.setUI(this);
 	}
 	
 	
-	public void Set_State(UI_STATE state) {
-		this.StAtE = state;
+	public void setState(UiState state) {   //changed UI_State to UiState and method Set_State to setState
+		this.state = state;  //Changed StAtE to state
 	}
 
 
-	public void RuN() {
+	public void run() {  //changed method RuN to run
 		output("Pay Fine Use Case UI\n");
 		
 		while (true) {
 			
-			switch (StAtE) {
+			switch (state) {  //Changed StAtE to state
 			
 			case READY:
-				String Mem_Str = input("Swipe member card (press <enter> to cancel): ");
-				if (Mem_Str.length() == 0) {
-					CoNtRoL.CaNcEl();
+				String memStr = input("Swipe member card (press <enter> to cancel): ");  //changed Mem_Str to memStr
+				if (memStr.length() == 0) {  //changed Mem_Str to memStr
+					control.cancel();  //Changed CoNtRoL variable to control and method CaNcEl to cancel
 					break;
 				}
 				try {
-					int Member_ID = Integer.valueOf(Mem_Str).intValue();
-					CoNtRoL.Card_Swiped(Member_ID);
+					int memberId = Integer.valueOf(memStr).intValue();  //changed Mem_Str to memStr and Member_ID to memberId
+					control.cardSwiped(memberId);  //Changed CoNtRoL variable to control and Member_ID to memberId and Card_Swiped to cardSwiped
 				}
 				catch (NumberFormatException e) {
 					output("Invalid memberId");
@@ -47,21 +47,21 @@ public class PayFineUI {
 				break;
 				
 			case PAYING:
-				double AmouNT = 0;
-				String Amt_Str = input("Enter amount (<Enter> cancels) : ");
-				if (Amt_Str.length() == 0) {
-					CoNtRoL.CaNcEl();
+				double amount = 0;  //changed AmouNT to amount
+				String amtStr = input("Enter amount (<Enter> cancels) : ");  //changed Amt_Str to amtStr
+				if (amtStr.length() == 0) {
+					control.cancel();  //Changed CoNtRoL variable to control and method CaNcEl to cancel
 					break;
 				}
 				try {
-					AmouNT = Double.valueOf(Amt_Str).doubleValue();
+					amount = Double.valueOf(amtStr).doubleValue();  //changed AmouNT to amount
 				}
 				catch (NumberFormatException e) {}
-				if (AmouNT <= 0) {
+				if (amount <= 0) {  //changed AmouNT to amount
 					output("Amount must be positive");
 					break;
 				}
-				CoNtRoL.PaY_FiNe(AmouNT);
+				control.payFine(amount);  //Changed CoNtRoL variable to control and changed AmouNT to amount and method PaY_FiNe to payFine
 				break;
 								
 			case CANCELLED:
@@ -74,7 +74,7 @@ public class PayFineUI {
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state :" + StAtE);			
+				throw new RuntimeException("FixBookUI : unhandled state :" + state);	//Changed StAtE to state		
 			
 			}		
 		}		
@@ -92,7 +92,7 @@ public class PayFineUI {
 	}	
 			
 
-	public void DiSplAY(Object object) {
+	public void display(Object object) {  //changed DiSplAY to display
 		output(object);
 	}
 
