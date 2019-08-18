@@ -82,8 +82,10 @@ public class BorrowBookControl {
 			return;
 		}
 		pendingBooks.add(book);
-		for (book B : pendingBooks) {
-			UI.Display(B.toString());
+		// book Changed to Book
+		// local variable B changed to pendingBook
+		for (Book pendingBook : pendingBooks) {
+			UI.Display(pendingBook.toString()); 
 		}
 		if (library.Loans_Remaining_For_Member(member) - pendingBooks.size() == 0) {
 			UI.Display("Loan limit reached");
@@ -98,10 +100,12 @@ public class BorrowBookControl {
 		}
 		else {
 			UI.Display("\nFinal Borrowing List");
-			for (book B : pendingBooks) {
-				UI.Display(B.toString());
+			// class name book changed to Book
+			// local variable B changed to pendingBook
+			for (Book pendingBook : pendingBooks) {
+				UI.Display(pendingBook.toString());
 			}
-			completed = new ArrayList<loan>();
+			completed = new ArrayList<Loan>();
 			UI.Set_State(BorrowBookUI.UI_STATE.FINALISING);
 			state = ControlState.FINALISING;
 		}
@@ -112,13 +116,15 @@ public class BorrowBookControl {
 		if (!state.equals(ControlState.FINALISING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call commitLoans except in FINALISING state");
 		}	
-		for (book B : pendingBooks) {
-			loan LOAN = library.ISSUE_LAON(B, member);
-			completed.add(LOAN);			
+		// class name book changed to Book
+		// local variable B changed to pendingBook
+		for (Book pendingBook : pendingBooks) {
+			Loan loan = library.ISSUE_LAON(pendingBook, member); // class and variable naming changed
+			completed.add(loan);			
 		}
 		UI.Display("Completed Loan Slip");
-		for (loan LOAN : completed) {
-			UI.Display(LOAN.toString());
+		for (Loan loan : completed) {
+			UI.Display(loan.toString());
 		}
 		UI.Set_State(BorrowBookUI.UI_STATE.COMPLETED);
 		state = ControlState.COMPLETED;
