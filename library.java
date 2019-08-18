@@ -124,7 +124,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 
 	public Member addMember(String lastName, String firstName, String email, int phoneNo) {	//Changed the method name to more meaningful By Sudeep Maharjan
 		Member member = new member(lastName, firstName, email, phoneNo, NextMID());
-		members.put(member.GeT_ID(), member);		
+		members.put(member.get_id(), member);// Changed the method name 	
 		return member;
 	}
 
@@ -160,12 +160,12 @@ public class Library implements Serializable {// Changed the class name from 'li
 			return false;
 		}
 				
-		if (member.Fines_OwEd() >= MAX_FINES_OWED) {
+		if (member.fines_owed() >= MAX_FINES_OWED) {// Changed the method name 
 			return false;
 		}
 
-		for (loan loan : member.GeT_LoAnS()) {
-			if (loan.OVer_Due()) {
+		for (loan loan : member.get_loans()) {// Changed the method name 
+			if (loan.over_due()) {// Changed the method name 
 				return false;
 			}
 		}
@@ -214,7 +214,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 		double overDueFine = CalculateOverDueFine(currentLoan);
 		member.Add_Fine(overDueFine);	
 		
-		member.dIsChArGeLoAn(currentLoan);
+		member.dischargeLoan(currentLoan);// Changed the method name 
 		book.Return(isDamaged);
 		if (isDamaged) {
 			member.Add_Fine(DAMAGE_FEE);
