@@ -155,7 +155,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 	}
 
 	
-	public boolean checkMemberCanBorrow(member member) { //Changed the method name to more meaningful By Sudeep Maharjan	
+	public boolean checkMemberCanBorrow(Member member) { //Changed the method name to more meaningful By Sudeep Maharjan	
 		if (member.Number_Of_Current_Loans() == LOAN_LIMIT ){
 			return false;
 		}
@@ -173,12 +173,12 @@ public class Library implements Serializable {// Changed the class name from 'li
 	}
 
 	
-	public int getLoansRemaining(member member) { //Changed the method name to more meaningful By Sudeep Maharjan	
+	public int getLoansRemaining(Book member) { //Changed the method name to more meaningful By Sudeep Maharjan	
 		return LOAN_LIMIT - member.Number_Of_Current_Loans();
 	}
 
 	
-	public loan loanIssue(book book, member member) { //Changed the method name to more meaningful By Sudeep Maharjan	
+	public loan loanIssue(Book book, Member member) { //Changed the method name to more meaningful By Sudeep Maharjan	
 		Date dueDate = Calendar.INSTANCE().Due_Date(LOAN_PERIOD);
 		loan loan = new loan(NextLID(), book, member, dueDate);
 		member.Take_Out_Loan(loan);
@@ -197,7 +197,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 	}
 
 	
-	public double calculateOverDueFine(loan loan) { //Changed the method name to more meaningful By Sudeep Maharjan	
+	public double calculateOverDueFine(Loan loan) { //Changed the method name to more meaningful By Sudeep Maharjan	
 		if (loan.OVer_Due()) {
 			long daysOverDue = Calendar.INSTANCE().Get_Days_Difference(loan.Get_Due_Date());
 			double fine = daysOverDue * FINE_PER_DAY;
@@ -207,7 +207,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 	}
 
 
-	public void dischargeLoan(loan currentLoan, boolean isDamaged) {//Changed the method name to more meaningful By Sudeep Maharjan	
+	public void dischargeLoan(Loan currentLoan, boolean isDamaged) {//Changed the method name to more meaningful By Sudeep Maharjan	
 		member member = currentLoan.Member();
 		book book  = currentLoan.Book();
 		
@@ -231,7 +231,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 		}		
 	}
 
-	public void repairBook(book currentBook) {//Changed the method name to more meaningful By Sudeep Maharjan	
+	public void repairBook(Book currentBook) {//Changed the method name to more meaningful By Sudeep Maharjan	
 		if (damagedBooks.containsKey(currentBook.ID())) {
 			currentBook.Repair();
 			damagedBooks.remove(currentBook.ID());
