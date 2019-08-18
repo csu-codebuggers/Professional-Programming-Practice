@@ -4,8 +4,8 @@ public class PayFineControl {
 	private enum controlState { INITIALISED, READY, PAYING, COMPLETED, CANCELLED }; //changed CONTROL_STATE to controlState
 	private controlState state;  //changed StAtE to state and CONTROL_STATE to controlState
 	
-	private library library;  //changed LiBrArY to library
-	private member member;   //changed MeMbEr to member
+	private Library library;  //changed LiBrArY to library and library to Library
+	private Member member;   //changed MeMbEr to member and member to Member
 
 
 	public PayFineControl() {
