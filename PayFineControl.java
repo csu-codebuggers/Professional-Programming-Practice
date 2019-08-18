@@ -31,10 +31,10 @@ public class PayFineControl {
 		member = library.MEMBER(memberId);  //changed LiBrArY to library and MeMbEr to member
 		
 		if (member == null) { //changed MeMbEr to member
-			ui.DiSplAY("Invalid Member Id"); //changed Ui to ui
+			ui.display("Invalid Member Id"); //changed Ui to ui and DiSplAY to display
 			return;
 		}
-		ui.DiSplAY(member.toString()); //changed MeMbEr to member and Ui to ui
+		ui.display(member.toString()); //changed MeMbEr to member and Ui to ui and DiSplAY to display
 		Ui.Set_State(PayFineUI.UI_STATE.PAYING);  //changed Ui to ui
 		state = controlState.PAYING; //changed StAtE to state and CONTROL_STATE to controlState
 	}
@@ -52,9 +52,9 @@ public class PayFineControl {
 		}	
 		double change = MeMbEr.Pay_Fine(amount); //changed AmOuNt to amount and ChAnGe to change
 		if (change > 0) { //changed ChAnGe to change
-			ui.DiSplAY(String.format("Change: $%.2f", change)); //changed ChAnGe to change and Ui to ui
+			ui.display(String.format("Change: $%.2f", change)); //changed ChAnGe to change and Ui to ui and DiSplAY to display
 		}
-		ui.DiSplAY(member.toString()); //changed Ui to ui and MeMbEr to member
+		ui.display(member.toString()); //changed Ui to ui and MeMbEr to member and DiSplAY to display
 		ui.Set_State(PayFineUI.UI_STATE.COMPLETED); //changed Ui to ui
 		state = controlState.COMPLETED;  //changed StAtE to state and CONTROL_STATE to controlState
 		return change;
