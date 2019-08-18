@@ -40,17 +40,17 @@ public class PayFineControl {
 	}
 	
 	
-	public void CaNcEl() {
+	public void cancel() { //changed CaNcEl to cancel
 		ui.Set_State(PayFineUI.UI_STATE.CANCELLED);  //changed Ui to ui
 		state = controlState.CANCELLED; //changed StAtE to state and CONTROL_STATE to controlState
 	}
 
 
-	public double PaY_FiNe(double amount) { //changes AmOuNt to amount
+	public double payFine(double amount) { //changes AmOuNt to amount and PaY_Fine to payFine
 		if (!state.equals(controlState.PAYING)) { //changed StAtE to state and CONTROL_STATE to controlState
 			throw new RuntimeException("PayFineControl: cannot call payFine except in PAYING state");
 		}	
-		double change = MeMbEr.Pay_Fine(amount); //changed AmOuNt to amount and ChAnGe to change
+		double change = member.payFine(amount); //changed AmOuNt to amount and ChAnGe to change and PaY_Fine to payFine and MeMbEr to member
 		if (change > 0) { //changed ChAnGe to change
 			ui.display(String.format("Change: $%.2f", change)); //changed ChAnGe to change and Ui to ui and DiSplAY to display
 		}
