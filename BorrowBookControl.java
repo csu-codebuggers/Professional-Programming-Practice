@@ -23,7 +23,7 @@ public class BorrowBookControl {
 	// variable name changed from COMPLETED to completed
 	// class name changed from loan to Loan
 	private List<Loan> completed; 
-	
+
 	// variable name Book changed to book
 	// Class name changed from book to Book
 	private Book book; 
@@ -44,12 +44,14 @@ public class BorrowBookControl {
 		state = ControlState.READY;		
 	}
 
-		
-	public void Swiped(int MEMMER_ID) {
+
+	// method name Swiped changed to cardSwiped
+	// parameter name MEMMER_ID changed to memberId
+	public void cardSwiped(int memberId) {
 		if (!state.equals(ControlState.READY)) {
 			throw new RuntimeException("BorrowBookControl: cannot call cardSwiped except in READY state");
 		}
-		member = library.MEMBER(MEMMER_ID);
+		member = library.MEMBER(memberId);
 		if ( member == null) {
 			UI.Display("Invalid memberId");
 			return;
@@ -64,8 +66,8 @@ public class BorrowBookControl {
 		}
 	}
 	
-	
-	public void scanned(int bookId) {
+	// function name scanned changed to bookScanned
+	public void bookScanned(int bookId) {
 		book = null;
 		if (!state.equals(ControlState.SCANNING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call bookScanned except in SCANNING state");
