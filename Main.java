@@ -193,12 +193,12 @@ public class Main {
 	
 	private static void ADD_MEMBER() {
 		try {
-			String LN = input("Enter last name: ");
-			String FN  = input("Enter first name: ");
-			String EM = input("Enter email: ");
-			int PN = Integer.valueOf(input("Enter phone number: ")).intValue();
-			member M = lib.Add_mem(LN, FN, EM, PN); //changed LIB to lib
-			output("\n" + M + "\n");
+			String lastName = input("Enter last name: ");  //changed LN to lastName
+			String firstName  = input("Enter first name: "); //changed FN to firstName
+			String email = input("Enter email: "); //changed EM to email
+			int phone = Integer.valueOf(input("Enter phone number: ")).intValue(); //changed PN to phone
+			member member = lib.Add_mem(LN, FN, EM, PN); //changed LIB to lib and LN to lastName and FN to firstName and EM to email and PN to phone and M to member
+			output("\n" + member + "\n"); //changed M to member
 			
 		} catch (NumberFormatException e) {
 			 output("\nInvalid phone number\n");
