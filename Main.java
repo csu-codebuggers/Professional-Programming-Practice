@@ -64,43 +64,43 @@ public class Main {
 				switch (c.toUpperCase()) {
 				
 				case "M": 
-					ADD_MEMBER();
+					addMember(); //changed ADD_MEMBER to addMember
 					break;
 					
 				case "LM": 
-					MEMBERS();
+					members(); //changed MEMBERS to members
 					break;
 					
 				case "B": 
-					ADD_BOOK();
+					addBook(); //changed ADD_BOOK to addBook
 					break;
 					
 				case "LB": 
-					BOOKS();
+					books(); //changed BOOKS to books
 					break;
 					
 				case "FB": 
-					FIX_BOOKS();
+					fixBooks(); //changed FIX_BOOKS to fixBooks
 					break;
 					
 				case "L": 
-					BORROW_BOOK();
+					BORROW_BOOK(); //changed BORROW_BOOK to burrowBook
 					break;
 					
 				case "R": 
-					RETURN_BOOK();
+					RETURN_BOOK(); //changed RETURN_BOOK to returnBook
 					break;
 					
 				case "LL": 
-					CURRENT_LOANS();
+					CURRENT_LOANS(); //changed CURRENT_LOANS to currentLoans
 					break;
 					
 				case "P": 
-					FINES();
+					fines(); //changed FINES to fines
 					break;
 					
 				case "T": 
-					INCREMENT_DATE();
+					incrementDate(); //changed INCREMENT_DATE to incrementDate
 					break;
 					
 				case "Q": 
@@ -162,7 +162,7 @@ public class Main {
 	}
 
 
-	private static void fixBook() { //changed FIX_BOOKS to fixBook
+	private static void fixBook() { //changed FIX_BOOKS to fixBooks
 		new FixBookUI(new FixBookControl()).RuN();		
 	}
 
