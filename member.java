@@ -30,7 +30,7 @@ public class Member implements Serializable { // Changed the class name to upper
 	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("Member:  ").append(id).append("\n")
+		sb.append("  Member:  ").append(id).append("\n")
 		  .append("  Name:  ").append(lastName).append(", ").append(firstName).append("\n")
 		  .append("  Email: ").append(email).append("\n")
 		  .append("  Phone: ").append(phoneNo)
