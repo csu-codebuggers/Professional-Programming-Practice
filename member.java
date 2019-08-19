@@ -14,7 +14,7 @@ public class Member implements Serializable { // Changed the class name to upper
 	private int id;// Changed the variable name to lowercase (camelcase) By Sudeep Maharjan
 	private double fines;// Changed the variable name to lowercase (camelcase) By Sudeep Maharjan
 	
-	private Map<Integer, loan> LNS;
+	private Map<Integer, loan> loans;// Changed the variable name to lowercase (camelcase) By Sudeep Maharjan
 
 	
 	public member(String lastName, String firstName, String email, int phoneNo, int id) {
@@ -24,7 +24,7 @@ public class Member implements Serializable { // Changed the class name to upper
 		this.phoneNo = phoneNo; // Changed the variable name to lowercase (camelcase) By Sudeep Maharjan
 		this.id = id; // Changed the variable name to lowercase (camelcase) By Sudeep Maharjan
 		
-		this.LNS = new HashMap<>();
+		this.loans = new HashMap<>();// Changed the variable name to lowercase (camelcase) By Sudeep Maharjan
 	}
 
 	
@@ -38,7 +38,7 @@ public class Member implements Serializable { // Changed the class name to upper
 		  .append(String.format("  Fines Owed :  $%.2f", fines))
 		  .append("\n");
 		
-		for (Loan loan : LNS.values()) {//Changed the class name to Uppercase and variable name to lowercase
+		for (Loan loan : loans.values()) {//Changed the class name to Uppercase and variable name to lowercase
 			sb.append(loan).append("\n");
 		}		  
 		return sb.toString();
@@ -51,12 +51,12 @@ public class Member implements Serializable { // Changed the class name to upper
 
 	
 	public List<loan> getLoans() {// Changed the method name to meaningful name
-		return new ArrayList<loan>(LNS.values());
+		return new ArrayList<loan>(loans.values());
 	}
 
 	
 	public int numberOfCurrentLoans() {// Changed the method name to meaningful name
-		return LNS.size();
+		return loans.size();
 	}
 
 	
@@ -66,8 +66,8 @@ public class Member implements Serializable { // Changed the class name to upper
 
 	
 	public void takeOutLoan(Loan loan) {// Changed the method name to meaningful name By Sudeep Maharjan
-		if (!LNS.containsKey(loan.ID())) {
-			LNS.put(loan.ID(), loan);
+		if (!loans.containsKey(loan.ID())) {
+			loans.put(loan.ID(), loan);
 		}
 		else {
 			throw new RuntimeException("Duplicate loan added to member");
@@ -106,8 +106,8 @@ public class Member implements Serializable { // Changed the class name to upper
 
 
 	public void dischargeLoan(Loan loan) {// Changed the method name to meaningful name
-		if (LNS.containsKey(loan.ID())) {
-			LNS.remove(loan.ID());
+		if (loans.containsKey(loan.ID())) {
+			loans.remove(loan.ID());
 		}
 		else {
 			throw new RuntimeException("No such loan held by member");
