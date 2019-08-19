@@ -45,27 +45,27 @@ public class Member implements Serializable { // Changed the class name to upper
 	}
 
 	
-	public int GeT_ID() {
+	public int getId() { // Changed the method name to meaningful name
 		return ID;
 	}
 
 	
-	public List<loan> GeT_LoAnS() {
+	public List<loan> getLoans() {// Changed the method name to meaningful name
 		return new ArrayList<loan>(LNS.values());
 	}
 
 	
-	public int Number_Of_Current_Loans() {
+	public int numberOfCurrentLoans() {// Changed the method name to meaningful name
 		return LNS.size();
 	}
 
 	
-	public double Fines_OwEd() {
+	public double finesOwed() {// Changed the method name to meaningful name
 		return fines;
 	}
 
 	
-	public void Take_Out_Loan(loan loan) {
+	public void takeOutLoan(Loan loan) {// Changed the method name to meaningful name By Sudeep Maharjan
 		if (!LNS.containsKey(loan.ID())) {
 			LNS.put(loan.ID(), loan);
 		}
@@ -75,21 +75,21 @@ public class Member implements Serializable { // Changed the class name to upper
 	}
 
 	
-	public String Get_LastName() {
+	public String getLastName() {// Changed the method name to meaningful name
 		return lastName;
 	}
 
 	
-	public String Get_FirstName() {
+	public String getFirstName() {// Changed the method name to meaningful name
 		return firstName;
 	}
 
 
-	public void Add_Fine(double fine) {
+	public void addFine(double fine) {// Changed the method name to meaningful name
 		fines += fine;
 	}
 	
-	public double Pay_Fine(double AmOuNt) {
+	public double payFine(double AmOuNt) {// Changed the method name to meaningful name
 		if (AmOuNt < 0) {
 			throw new RuntimeException("Member.payFine: amount must be positive");
 		}
@@ -105,7 +105,7 @@ public class Member implements Serializable { // Changed the class name to upper
 	}
 
 
-	public void dIsChArGeLoAn(loan LoAn) {
+	public void dischargeLoan(loan LoAn) {// Changed the method name to meaningful name
 		if (LNS.containsKey(LoAn.ID())) {
 			LNS.remove(LoAn.ID());
 		}
