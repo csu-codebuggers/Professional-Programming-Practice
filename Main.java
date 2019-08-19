@@ -52,14 +52,14 @@ public class Main {
 				output(b);
 			}
 						
-			MENU = Get_menu();
+			menu = Get_menu(); //changed MENU to menu
 			
 			boolean e = false;
 			
 			while (!e) {
 				
-				output("\n" + SDF.format(CAL.Date()));
-				String c = input(MENU);
+				output("\n" + sdf.format(CAL.Date())); //Changed SDF to sdf and CAL to cal
+				String c = input(menu); //changed MENU to menu
 				
 				switch (c.toUpperCase()) {
 				
@@ -127,7 +127,7 @@ public class Main {
 
 	private static void CURRENT_LOANS() {
 		output("");
-		for (loan loan : LIB.CurrentLoans()) {
+		for (loan loan : lib.CurrentLoans()) { //changed LIB to lib
 			output(loan + "\n");
 		}		
 	}
@@ -135,8 +135,8 @@ public class Main {
 
 
 	private static void BOOKS() {
-		output("");
-		for (book book : LIB.BOOKS()) {
+		output(""); 
+		for (book book : lib.BOOKS()) { //changed LIB to lib
 			output(book + "\n");
 		}		
 	}
@@ -145,7 +145,7 @@ public class Main {
 
 	private static void MEMBERS() {
 		output("");
-		for (member member : LIB.MEMBERS()) {
+		for (member member : lib.MEMBERS()) { //changed LIB to lib
 			output(member + "\n");
 		}		
 	}
@@ -170,9 +170,9 @@ public class Main {
 	private static void INCREMENT_DATE() {
 		try {
 			int days = Integer.valueOf(input("Enter number of days: ")).intValue();
-			CAL.incrementDate(days);
-			LIB.checkCurrentLoans();
-			output(SDF.format(CAL.Date()));
+			cal.incrementDate(days); //changed CAL to cal
+			lib.checkCurrentLoans(); //changed LIB to lib
+			output(SDF.format(cal.Date())); //changed CAL to cal
 			
 		} catch (NumberFormatException e) {
 			 output("\nInvalid number of days\n");
@@ -185,7 +185,7 @@ public class Main {
 		String A = input("Enter author: ");
 		String T  = input("Enter title: ");
 		String C = input("Enter call number: ");
-		book B = LIB.Add_book(A, T, C);
+		book B = lib.Add_book(A, T, C); //changed LIB to lib
 		output("\n" + B + "\n");
 		
 	}
@@ -197,7 +197,7 @@ public class Main {
 			String FN  = input("Enter first name: ");
 			String EM = input("Enter email: ");
 			int PN = Integer.valueOf(input("Enter phone number: ")).intValue();
-			member M = LIB.Add_mem(LN, FN, EM, PN);
+			member M = lib.Add_mem(LN, FN, EM, PN); //changed LIB to lib
 			output("\n" + M + "\n");
 			
 		} catch (NumberFormatException e) {
@@ -209,7 +209,7 @@ public class Main {
 
 	private static String input(String prompt) {
 		System.out.print(prompt);
-		return IN.nextLine();
+		return in.nextLine(); //changed IN to in
 	}
 	
 	
