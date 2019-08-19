@@ -46,7 +46,7 @@ public class Member implements Serializable { // Changed the class name to upper
 
 	
 	public int getId() { // Changed the method name to meaningful name
-		return ID;
+		return id;
 	}
 
 	
@@ -89,25 +89,25 @@ public class Member implements Serializable { // Changed the class name to upper
 		fines += fine;
 	}
 	
-	public double payFine(double AmOuNt) {// Changed the method name to meaningful name
-		if (AmOuNt < 0) {
+	public double payFine(double amount) {// Changed the method name to meaningful name
+		if (amount < 0) {
 			throw new RuntimeException("Member.payFine: amount must be positive");
 		}
 		double change = 0;
-		if (AmOuNt > fines) {
-			change = AmOuNt - fines;
+		if (amount > fines) {
+			change = amount - fines; //Changed the variable name Amount to amount by Sudeep Maharjan
 			fines = 0;
 		}
 		else {
-			fines -= AmOuNt;
+			fines -= amount;
 		}
 		return change;
 	}
 
 
-	public void dischargeLoan(loan LoAn) {// Changed the method name to meaningful name
-		if (LNS.containsKey(LoAn.ID())) {
-			LNS.remove(LoAn.ID());
+	public void dischargeLoan(Loan loan) {// Changed the method name to meaningful name
+		if (LNS.containsKey(loan.ID())) {
+			LNS.remove(loan.ID());
 		}
 		else {
 			throw new RuntimeException("No such loan held by member");
