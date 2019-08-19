@@ -172,7 +172,7 @@ public class Main {
 			int days = Integer.valueOf(input("Enter number of days: ")).intValue();
 			cal.incrementDate(days); //changed CAL to cal
 			lib.checkCurrentLoans(); //changed LIB to lib
-			output(SDF.format(cal.Date())); //changed CAL to cal
+			output(sdf.format(cal.Date())); //changed CAL to cal and SDF to sdf
 			
 		} catch (NumberFormatException e) {
 			 output("\nInvalid number of days\n");
@@ -182,11 +182,11 @@ public class Main {
 
 	private static void ADD_BOOK() {
 		
-		String A = input("Enter author: ");
-		String T  = input("Enter title: ");
-		String C = input("Enter call number: ");
-		book B = lib.Add_book(A, T, C); //changed LIB to lib
-		output("\n" + B + "\n");
+		String author = input("Enter author: "); //changed A to author
+		String title  = input("Enter title: "); //changed T to title
+		String call = input("Enter call number: "); //changed C to call
+		book book = lib.Add_book(author, title, call); //changed LIB to lib and B to book and A to author and T to title and C to call
+		output("\n" + book + "\n"); //changed B to book
 		
 	}
 
