@@ -11,7 +11,7 @@ public class Main {
 	private static SimpleDateFormat sdf; //Changed SDF to sdf
 	
 	
-	private static String Get_menu() {
+	private static String getMenu() { //changed Get_menu to getMenu
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append("\nLibrary Main Menu\n\n")
@@ -52,13 +52,13 @@ public class Main {
 				output(b);
 			}
 						
-			menu = Get_menu(); //changed MENU to menu
+			menu = getMenu(); //changed MENU to menu and Get_menu to getMenu
 			
 			boolean e = false;
 			
 			while (!e) {
 				
-				output("\n" + sdf.format(CAL.Date())); //Changed SDF to sdf and CAL to cal
+				output("\n" + sdf.format(cal.Date())); //Changed SDF to sdf and CAL to cal
 				String c = input(menu); //changed MENU to menu
 				
 				switch (c.toUpperCase()) {
@@ -120,12 +120,12 @@ public class Main {
 		output("\nEnded\n");
 	}	
 
-		private static void FINES() {
+		private static void fines() { //changed FINES to fines
 		new PayFineUI(new PayFineControl()).RuN();		
 	}
 
 
-	private static void CURRENT_LOANS() {
+	private static void currentLoans() { //changed CURRENT_LOANS to currentLoans
 		output("");
 		for (loan loan : lib.CurrentLoans()) { //changed LIB to lib
 			output(loan + "\n");
@@ -134,7 +134,7 @@ public class Main {
 
 
 
-	private static void BOOKS() {
+	private static void books() { //changed BOOKS to books
 		output(""); 
 		for (book book : lib.BOOKS()) { //changed LIB to lib
 			output(book + "\n");
@@ -143,7 +143,7 @@ public class Main {
 
 
 
-	private static void MEMBERS() {
+	private static void members() { //changed MEMBERS to members
 		output("");
 		for (member member : lib.MEMBERS()) { //changed LIB to lib
 			output(member + "\n");
