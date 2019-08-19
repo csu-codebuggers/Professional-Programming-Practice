@@ -16,63 +16,62 @@ import java.util.Map;
 @SuppressWarnings("serial")
 public class Library implements Serializable {// Changed the class name from 'library' to 'Library'
 	
-	private static final String libraryFile = "library.obj";
-	private static final int loanLimit = 2;
-	private static final int loanPeriod = 2;
-	private static final double finePerDay = 1.0;
-	private static final double maxFinesOwed = 1.0;
-	private static final double damageFee = 2.0;
+	private static final String LIBRARY_FILE = "library.obj"; // Changed the name of constants to uppercase and underscore seprated
+	private static final int LOAN_LIMIT = 2; // Changed the name of constants to uppercase and underscore seprated
+	private static final int LOAN_PERIOD = 2; // Changed the name of constants to uppercase and underscore seprated
+	private static final double FINE_PER_DAY = 1.0; // Changed the name of constants to uppercase and underscore seprated
+	private static final double MAX_FINES_OWED = 1.0; // Changed the name of constants to uppercase and underscore seprated
+	private static final double DAMAGE_FEE = 2.0; // Changed the name of constants to uppercase and underscore seprated
 	
-	private static library self;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan
+	private static Library self;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan
 	private int bookId;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan
 	private int memberId;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan
 	private int loanId;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan
 	private Date loanDate;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan
 	
-	private Map<Integer, book> CATALOG;
-	private Map<Integer, member> MEMBERS;
-	private Map<Integer, loan> LOANS;
-	private Map<Integer, loan> CURRENT_LOANS;
-	private Map<Integer, book> DAMAGED_BOOKS;
+	private Map<Integer, book> catalog; // Changed the variable name to lowercase
+	private Map<Integer, member> members; // Changed the variable name to lowercase
+	private Map<Integer, loan> loans; // Changed the variable name to lowercase
+	private Map<Integer, loan> currentLoans;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
+	private Map<Integer, book> damagedBooks;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
 	
 
-	private library() {
-		CATALOG = new HashMap<>();
-		MEMBERS = new HashMap<>();
-		LOANS = new HashMap<>();
-		CURRENT_LOANS = new HashMap<>();
-		DAMAGED_BOOKS = new HashMap<>();
-		bookId = 1;
-		memberId = 1;		
+	private Library() {
+		catalog = new HashMap<>();// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
+		members = new HashMap<>();// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
+		loans = new HashMap<>();// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
+		currentLoans = new HashMap<>();// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
+		damagedBooks = new HashMap<>();// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
+		bookId = 1;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
+		memberId = 1;// Changed the variable name to lowercase (camelback) by Sudeep Maharjan			
 		loanId = 1;	// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
 	}
 
-	
-	public static synchronized library INSTANCE() {		
-		if (SeLf == null) {
-			Path PATH = Paths.get(libraryFile);			
+	public static synchronized Library INSTANCE() {		
+		if (self == null) {
+			Path PATH = Paths.get(LIBRARY_FILE);			
 			if (Files.exists(PATH)) {	
-				try (ObjectInputStream LiF = new ObjectInputStream(new FileInputStream(libraryFile));) {
+				try (ObjectInputStream LiF = new ObjectInputStream(new FileInputStream(LIBRARY_FILE));) {
 			    
-					SeLf = (library) LiF.readObject();
-					Calendar.INSTANCE().Set_dATE(SeLf.LOAN_DATE);
+					self = (Library) LiF.readObject();
+					Calendar.INSTANCE().Set_dATE(self.LOAN_DATE);
 					LiF.close();
 				}
 				catch (Exception e) {
 					throw new RuntimeException(e);
 				}
 			}
-			else SeLf = new library();
+			else self = new Library();
 		}
-		return SeLf;
+		return self;
 	}
 
 	
 	public static synchronized void SAVE() {
-		if (SeLf != null) {
-			SeLf.LOAN_DATE = Calendar.INSTANCE().Date();
-			try (ObjectOutputStream LoF = new ObjectOutputStream(new FileOutputStream(libraryFile));) {
-				LoF.writeObject(SeLf);
+		if (self != null) {
+			self.LOAN_DATE = Calendar.INSTANCE().Date();
+			try (ObjectOutputStream LoF = new ObjectOutputStream(new FileOutputStream(LIBRARY_FILE));) {
+				LoF.writeObject(self);
 				LoF.flush();
 				LoF.close();	
 			}
@@ -83,163 +82,164 @@ public class Library implements Serializable {// Changed the class name from 'li
 	}
 
 	
-	public int BookID() {
+	public int getBookID() { //Changed the method name to more meaningful By Sudeep Maharjan
 		return bookId;// Changed variable name from BOOK_ID to bookId by Sudeep Maharjan
 	}
 	
 	
-	public int MemberID() {
+	public int getMemberID() { //Changed the method name to more meaningful By Sudeep Maharjan
 		return memberId;// Changed variable name from MEMBER_ID to memberId by Sudeep Maharjan
 	}
 	
 	
-	private int NextBID() {
-		return bookId++;// Changed variable name from BOOK_ID to bookId by Sudeep Maharjan
+	private int getNextBID() { //Changed the method name to more meaningful By Sudeep Maharjan
+		return bookId++;// Change variable name from BOOK_ID to bookId by Sudeep Maharjan
 	}
 
 	
-	private int NextMID() {
+	private int getNextMID() { //Changed the method name to more meaningful By Sudeep Maharjan
 		return memberId++;// Changed variable name from Member_Id to memberId by Sudeep Maharjan
 	}
 
 	
-	private int NextLID() {
+	private int getNextLID() { //Changed the method name to more meaningful By Sudeep Maharjan
 		return loanId++;// Changed variable name from Loan_id to loanId by Sudeep Maharjan
 	}
 
 	
-	public List<member> MEMBERS() {		
-		return new ArrayList<member>(MEMBERS.values()); 
+	public List<member> getMembers() { //Changed the method name to more meaningful By Sudeep Maharjan		
+		return new ArrayList<member>(members.values()); 
 	}
 
 
-	public List<book> BOOKS() {		
-		return new ArrayList<book>(CATALOG.values()); 
+	public List<book> getBooks() {	//Changed the method name to more meaningful By Sudeep Maharjan	
+		return new ArrayList<book>(catalog.values()); 
 	}
 
 
-	public List<loan> CurrentLoans() {
-		return new ArrayList<loan>(CURRENT_LOANS.values());
+	public List<loan> getCurrentLoans() { //Changed the method name to more meaningful By Sudeep Maharjan
+		return new ArrayList<loan>(currentLoans.values());
 	}
 
 
-	public member Add_mem(String lastName, String firstName, String email, int phoneNo) {		
-		member member = new member(lastName, firstName, email, phoneNo, NextMID());
-		MEMBERS.put(member.GeT_ID(), member);		
+	public Member addMember(String lastName, String firstName, String email, int phoneNo) {	//Changed the method name to more meaningful By Sudeep Maharjan
+		Member member = new member(lastName, firstName, email, phoneNo, NextMID());
+		members.put(member.get_id(), member);// Changed the method name 	
 		return member;
 	}
 
 	
-	public book Add_book(String a, String t, String c) {		
-		book b = new book(a, t, c, NextBID());
-		CATALOG.put(b.ID(), b);		
+	public Book addBook(String a, String t, String c) {	//Changed the method name to more meaningful By Sudeep Maharjan	
+		Book b = new book(a, t, c, NextBID()); // Changed the class name from lowercase to uppercase
+		catalog.put(b.ID(), b);		
 		return b;
 	}
 
 	
-	public member MEMBER(int memberId) {
-		if (MEMBERS.containsKey(memberId)) 
-			return MEMBERS.get(memberId);
+	public Member checkMember(int memberId) { //Changed the method name to more meaningful By Sudeep Maharjan
+		if (members.containsKey(memberId)) 
+			return members.get(memberId);
 		return null;
 	}
 
 	
-	public book Book(int bookId) {
-		if (CATALOG.containsKey(bookId)) 
-			return CATALOG.get(bookId);		
+	public Book checkBook(int bookId) { //Changed the method name to more meaningful By Sudeep Maharjan
+		if (catalog.containsKey(bookId)) 
+			return catalog.get(bookId);		
 		return null;
 	}
 
 	
-	public int LOAN_LIMIT() {
-		return loanLimit;
+	public int getLoanLimit() { //Changed the method name to more meaningful By Sudeep Maharjan
+		return LOAN_LIMIT;
 	}
 
 	
-	public boolean MEMBER_CAN_BORROW(member member) {		
-		if (member.Number_Of_Current_Loans() == loanLimit ) 
+	public boolean checkMemberCanBorrow(Member member) { //Changed the method name to more meaningful By Sudeep Maharjan	
+		if (member.Number_Of_Current_Loans() == LOAN_LIMIT ){
 			return false;
+		}
 				
-		if (member.Fines_OwEd() >= maxFinesOwed) 
+		if (member.fines_owed() >= MAX_FINES_OWED) {// Changed the method name 
 			return false;
-				
-		for (loan loan : member.GeT_LoAnS()) 
-			if (loan.OVer_Due()) 
+		}
+
+		for (loan loan : member.get_loans()) {// Changed the method name 
+			if (loan.over_due()) {// Changed the method name 
 				return false;
-			
+			}
+		}
 		return true;
 	}
 
 	
-	public int Loans_Remaining_For_Member(member member) {		
-		return loanLimit - member.Number_Of_Current_Loans();
+	public int getLoansRemaining(Book member) { //Changed the method name to more meaningful By Sudeep Maharjan	
+		return LOAN_LIMIT - member.Number_Of_Current_Loans();
 	}
 
 	
-	public loan ISSUE_LAON(book book, member member) {
-		Date dueDate = Calendar.INSTANCE().Due_Date(loanPeriod);
+	public Loan loanIssue(Book book, Member member) { //Changed the method name to more meaningful By Sudeep Maharjan	
+		Date dueDate = Calendar.INSTANCE().Due_Date(LOAN_PERIOD);
 		loan loan = new loan(NextLID(), book, member, dueDate);
 		member.Take_Out_Loan(loan);
 		book.Borrow();
-		LOANS.put(loan.ID(), loan);
-		CURRENT_LOANS.put(book.ID(), loan);
+		loans.put(loan.ID(), loan);
+		currentLoans.put(book.ID(), loan);
 		return loan;
 	}
 	
 	
-	public loan LOAN_BY_bookId(int bookId) {
-		if (CURRENT_LOANS.containsKey(bookId)) {
-			return CURRENT_LOANS.get(bookId);
+	public Loan getLoanByBookId(int bookId) { //Changed the method name to more meaningful By Sudeep Maharjan	
+		if (currentLoans.containsKey(bookId)) {
+			return currentLoans.get(bookId);
 		}
 		return null;
 	}
 
 	
-	public double CalculateOverDueFine(loan loan) {
+	public double calculateOverDueFine(Loan loan) { //Changed the method name to more meaningful By Sudeep Maharjan	
 		if (loan.OVer_Due()) {
 			long daysOverDue = Calendar.INSTANCE().Get_Days_Difference(loan.Get_Due_Date());
-			double fine = daysOverDue * finePerDay;
+			double fine = daysOverDue * FINE_PER_DAY;
 			return fine;
 		}
 		return 0.0;		
 	}
 
 
-	public void Discharge_loan(loan currentLoan, boolean isDamaged) {
+	public void dischargeLoan(Loan currentLoan, boolean isDamaged) {//Changed the method name to more meaningful By Sudeep Maharjan	
 		member member = currentLoan.Member();
 		book book  = currentLoan.Book();
 		
 		double overDueFine = CalculateOverDueFine(currentLoan);
 		member.Add_Fine(overDueFine);	
 		
-		member.dIsChArGeLoAn(currentLoan);
+		member.dischargeLoan(currentLoan);// Changed the method name 
 		book.Return(isDamaged);
 		if (isDamaged) {
-			member.Add_Fine(damageFee);
-			DAMAGED_BOOKS.put(book.ID(), book);
+			member.Add_Fine(DAMAGE_FEE);
+			damagedBooks.put(book.ID(), book);
 		}
 		currentLoan.DiScHaRgE();
-		CURRENT_LOANS.remove(book.ID());
+		currentLoans.remove(book.ID());
 	}
 
 
-	public void checkCurrentLoans() {
-		for (loan loan : CURRENT_LOANS.values()) {
+	public void checkCurrentLoans() {//Changed the method name to more meaningful By Sudeep Maharjan	
+		for (Loan loan : currentLoans.values()) {
 			loan.checkOverDue();
 		}		
 	}
 
-
-	public void Repair_BOOK(book currentBook) {
-		if (DAMAGED_BOOKS.containsKey(currentBook.ID())) {
+	public void repairBook(Book currentBook) {//Changed the method name to more meaningful By Sudeep Maharjan	
+		if (damagedBooks.containsKey(currentBook.ID())) {
 			currentBook.Repair();
-			DAMAGED_BOOKS.remove(currentBook.ID());
+			damagedBooks.remove(currentBook.ID());
 		}
 		else {
 			throw new RuntimeException("Library: repairBook: book is not damaged");
 		}
 		
 	}
-	
 	
 }
