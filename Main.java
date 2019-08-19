@@ -44,11 +44,11 @@ public class Main {
 			cal = Calendar.INSTANCE(); //changed CAL to cal
 			sdf = new SimpleDateFormat("dd/MM/yyyy"); //Changed SDF to sdf
 	
-			for (member m : lib.MEMBERS()) { //changed LIB to lib
+			for (member m : lib.members//changed LIB to lib and MEMBERS to members
 				output(m);
 			}
 			output(" ");
-			for (book b : lib.BOOKS()) { //changed LIB to lib
+			for (book b : lib.books()) { //changed LIB to lib and BOOKS to books
 				output(b);
 			}
 						
@@ -84,15 +84,15 @@ public class Main {
 					break;
 					
 				case "L": 
-					BORROW_BOOK(); //changed BORROW_BOOK to burrowBook
+					burrowBook(); //changed BORROW_BOOK to burrowBook
 					break;
 					
 				case "R": 
-					RETURN_BOOK(); //changed RETURN_BOOK to returnBook
+					returnBook(); //changed RETURN_BOOK to returnBook
 					break;
 					
 				case "LL": 
-					CURRENT_LOANS(); //changed CURRENT_LOANS to currentLoans
+					currentLoans(); //changed CURRENT_LOANS to currentLoans
 					break;
 					
 				case "P": 
@@ -112,7 +112,7 @@ public class Main {
 					break;
 				}
 				
-				library.SAVE();
+				library.save(); //changed SAVE to save
 			}			
 		} catch (RuntimeException e) {
 			output(e);
