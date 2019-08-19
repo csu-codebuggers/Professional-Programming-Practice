@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
 	
 	private static Scanner in; //changed IN to in
-	private static library lib; //changed LIB to lib
+	private static Library lib; //changed LIB to lib and library to Library
 	private static String menu; //changed MENU to menu
 	private static Calendar cal; //changed CAL to cal
 	private static SimpleDateFormat sdf; //Changed SDF to sdf
@@ -40,7 +40,7 @@ public class Main {
 	public static void main(String[] args) {		
 		try {			
 			in = new Scanner(System.in); //changed IN to in
-			lib = library.INSTANCE(); //changed LIB to lib
+			lib = Library.INSTANCE(); //changed LIB to lib and library to Library
 			cal = Calendar.INSTANCE(); //changed CAL to cal
 			sdf = new SimpleDateFormat("dd/MM/yyyy"); //Changed SDF to sdf
 	
@@ -112,7 +112,7 @@ public class Main {
 					break;
 				}
 				
-				library.save(); //changed SAVE to save
+				Library.save(); //changed SAVE to save and library to Library
 			}			
 		} catch (RuntimeException e) {
 			output(e);
