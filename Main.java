@@ -121,7 +121,7 @@ public class Main {
 	}	
 
 		private static void fines() { //changed FINES to fines
-		new PayFineUI(new PayFineControl()).RuN();		
+		new PayFineUI(new PayFineControl()).run();	//changed RuN to run
 	}
 
 
@@ -136,7 +136,7 @@ public class Main {
 
 	private static void books() { //changed BOOKS to books
 		output(""); 
-		for (book book : lib.BOOKS()) { //changed LIB to lib
+		for (book book : lib.books()) { //changed LIB to lib and BOOKS to books
 			output(book + "\n");
 		}		
 	}
@@ -145,7 +145,7 @@ public class Main {
 
 	private static void members() { //changed MEMBERS to members
 		output("");
-		for (member member : lib.MEMBERS()) { //changed LIB to lib
+		for (member member : lib.members()) { //changed LIB to lib and MEMBERS to members
 			output(member + "\n");
 		}		
 	}
@@ -158,12 +158,12 @@ public class Main {
 
 
 	private static void returnBook() { //changed RETURN_BOOK to returnBook
-		new ReturnBookUI(new ReturnBookControl()).RuN();		
+		new ReturnBookUI(new ReturnBookControl()).run();	 //changed RuN to run
 	}
 
 
 	private static void fixBook() { //changed FIX_BOOKS to fixBooks
-		new FixBookUI(new FixBookControl()).RuN();		
+		new FixBookUI(new FixBookControl()).run();		//changed RuN to run
 	}
 
 
@@ -197,7 +197,7 @@ public class Main {
 			String firstName  = input("Enter first name: "); //changed FN to firstName
 			String email = input("Enter email: "); //changed EM to email
 			int phone = Integer.valueOf(input("Enter phone number: ")).intValue(); //changed PN to phone
-			member member = lib.Add_mem(LN, FN, EM, PN); //changed LIB to lib and LN to lastName and FN to firstName and EM to email and PN to phone and M to member
+			member member = lib.Add_mem(lastName, firstName, email, phone); //changed LIB to lib and LN to lastName and FN to firstName and EM to email and PN to phone and M to member
 			output("\n" + member + "\n"); //changed M to member
 			
 		} catch (NumberFormatException e) {
