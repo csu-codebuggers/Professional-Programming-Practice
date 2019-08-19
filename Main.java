@@ -39,16 +39,16 @@ public class Main {
 
 	public static void main(String[] args) {		
 		try {			
-			IN = new Scanner(System.in);
-			LIB = library.INSTANCE();
-			CAL = Calendar.INSTANCE();
-			SDF = new SimpleDateFormat("dd/MM/yyyy");
+			in = new Scanner(System.in); //changed IN to in
+			lib = library.INSTANCE(); //changed LIB to lib
+			cal = Calendar.INSTANCE(); //changed CAL to cal
+			sdf = new SimpleDateFormat("dd/MM/yyyy"); //Changed SDF to sdf
 	
-			for (member m : LIB.MEMBERS()) {
+			for (member m : lib.MEMBERS()) { //changed LIB to lib
 				output(m);
 			}
 			output(" ");
-			for (book b : LIB.BOOKS()) {
+			for (book b : lib.BOOKS()) { //changed LIB to lib
 				output(b);
 			}
 						
