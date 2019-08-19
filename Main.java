@@ -152,22 +152,22 @@ public class Main {
 
 
 
-	private static void BORROW_BOOK() {
+	private static void borrowBook() { //changed BORROW_BOOK to borrowBook
 		new BorrowBookUI(new BorrowBookControl()).run();		
 	}
 
 
-	private static void RETURN_BOOK() {
+	private static void returnBook() { //changed RETURN_BOOK to returnBook
 		new ReturnBookUI(new ReturnBookControl()).RuN();		
 	}
 
 
-	private static void FIX_BOOKS() {
+	private static void fixBook() { //changed FIX_BOOKS to fixBook
 		new FixBookUI(new FixBookControl()).RuN();		
 	}
 
 
-	private static void INCREMENT_DATE() {
+	private static void incrementDate) { //changed INCREMENT_DATE to incrementDate
 		try {
 			int days = Integer.valueOf(input("Enter number of days: ")).intValue();
 			cal.incrementDate(days); //changed CAL to cal
@@ -180,7 +180,7 @@ public class Main {
 	}
 
 
-	private static void ADD_BOOK() {
+	private static void addBook() { //changed ADD_BOOK to addBook
 		
 		String author = input("Enter author: "); //changed A to author
 		String title  = input("Enter title: "); //changed T to title
@@ -191,7 +191,7 @@ public class Main {
 	}
 
 	
-	private static void ADD_MEMBER() {
+	private static void addMember() { //changed ADD_MEMBER to addMember
 		try {
 			String lastName = input("Enter last name: ");  //changed LN to lastName
 			String firstName  = input("Enter first name: "); //changed FN to firstName
