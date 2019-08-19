@@ -5,8 +5,13 @@ public class FixBookControl {
 	private enum ControlState { INITIALISED, READY, FIXING };
 	private ControlState state; // variable name StAtE changed to state
 	
-	private library library; // variable name (LIB) changed to library
-	private book currentBook; // variable name (Cur_Book) changed to currentBook
+	// variable name (LIB) changed to library
+	// class name library changed to Library
+	private Library library; 
+
+	// variable name (Cur_Book) changed to currentBook
+	// class name book changed to Book
+	private Book currentBook; 
 
 	public FixBookControl() {
 		this.library = library.INSTANCE();
