@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings("serial")
-public class member implements Serializable {
+public class Member implements Serializable { // Changed the class name to uppercase
 
 	private String lastName; // Changed the variable name to lowercase (camelcase) By Sudeep Maharjan
 	private String firstName;// Changed the variable name to lowercase (camelcase) By Sudeep Maharjan
@@ -38,8 +38,8 @@ public class member implements Serializable {
 		  .append(String.format("  Fines Owed :  $%.2f", fines))
 		  .append("\n");
 		
-		for (loan LoAn : LNS.values()) {
-			sb.append(LoAn).append("\n");
+		for (Loan loan : LNS.values()) {//Changed the class name to Uppercase and variable name to lowercase
+			sb.append(loan).append("\n");
 		}		  
 		return sb.toString();
 	}
