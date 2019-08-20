@@ -3,23 +3,23 @@ import java.util.Scanner;
 
 public class FixBookUI {
 
-	public static enum UI_STATE { INITIALISED, READY, FIXING, COMPLETED };
+	public static enum UiState { INITIALISED, READY, FIXING, COMPLETED };  //Changed UI_STATE to UiState
 
-	private FixBookControl CoNtRoL;
+	private FixBookControl control;  //Changed CoNtRoL variable to control
 	private Scanner input;
-	private UI_STATE StAtE;
+	private UiState state;  //Changed UI_STATE to UiState and StAtE to state
 
 	
 	public FixBookUI(FixBookControl control) {
-		this.CoNtRoL = control;
+		this.control = control; //Changed CoNtRoL variable to control
 		input = new Scanner(System.in);
-		StAtE = UI_STATE.INITIALISED;
-		control.Set_Ui(this);
+		state = UiState.INITIALISED; //Changed UI_STATE to UiState and StAtE to state
+		control.Set_Ui(this); //Changed CoNtRoL variable to control
 	}
 
 
-	public void Set_State(UI_STATE state) {
-		this.StAtE = state;
+	public void Set_State(UiState state) { //Changed UI_STATE to UiState
+		this.state = state; //Changed StAtE to state
 	}
 
 	
@@ -28,17 +28,17 @@ public class FixBookUI {
 		
 		while (true) {
 			
-			switch (StAtE) {
+			switch (state) { //Changed StAtE to state
 			
 			case READY:
 				String Book_STR = input("Scan Book (<enter> completes): ");
 				if (Book_STR.length() == 0) {
-					CoNtRoL.SCannING_COMplete();
+					control.SCannING_COMplete();
 				}
 				else {
 					try {
 						int Book_ID = Integer.valueOf(Book_STR).intValue();
-						CoNtRoL.Book_scanned(Book_ID);
+						control.Book_scanned(Book_ID);
 					}
 					catch (NumberFormatException e) {
 						output("Invalid bookId");
@@ -52,7 +52,7 @@ public class FixBookUI {
 				if (AnS.toUpperCase().equals("Y")) {
 					FiX = true;
 				}
-				CoNtRoL.FIX_Book(FiX);
+				control.FIX_Book(FiX);
 				break;
 								
 			case COMPLETED:
@@ -61,7 +61,7 @@ public class FixBookUI {
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state :" + StAtE);			
+				throw new RuntimeException("FixBookUI : unhandled state :" + state);	//Changed StAtE to state		
 			
 			}		
 		}
