@@ -124,7 +124,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 
 	public Member addMember(String lastName, String firstName, String email, int phoneNo) {	//Changed the method name to more meaningful By Sudeep Maharjan
 		Member member = new member(lastName, firstName, email, phoneNo, NextMID());
-		members.put(member.get_id(), member);// Changed the method name 	
+		members.put(member.getId(), member);// Changed the method name 	
 		return member;
 	}
 
@@ -156,15 +156,15 @@ public class Library implements Serializable {// Changed the class name from 'li
 
 	
 	public boolean checkMemberCanBorrow(Member member) { //Changed the method name to more meaningful By Sudeep Maharjan	
-		if (member.Number_Of_Current_Loans() == LOAN_LIMIT ){
+		if (member.numberOfCurrentLoans() == LOAN_LIMIT ){// Changed the method name according to changes made in member class
 			return false;
 		}
 				
-		if (member.fines_owed() >= MAX_FINES_OWED) {// Changed the method name 
+		if (member.finesOwed() >= MAX_FINES_OWED) {// Changed the method name according to changes made in member class
 			return false;
 		}
 
-		for (loan loan : member.get_loans()) {// Changed the method name 
+		for (loan loan : member.getLoans()) {// Changed the method name according to changes made in member class
 			if (loan.over_due()) {// Changed the method name 
 				return false;
 			}
@@ -174,14 +174,14 @@ public class Library implements Serializable {// Changed the class name from 'li
 
 	
 	public int getLoansRemaining(Book member) { //Changed the method name to more meaningful By Sudeep Maharjan	
-		return LOAN_LIMIT - member.Number_Of_Current_Loans();
+		return LOAN_LIMIT - member.numberOfCurrentLoans();// Changed the method name according to changes made in member class
 	}
 
 	
 	public Loan loanIssue(Book book, Member member) { //Changed the method name to more meaningful By Sudeep Maharjan	
 		Date dueDate = Calendar.INSTANCE().Due_Date(LOAN_PERIOD);
 		loan loan = new loan(NextLID(), book, member, dueDate);
-		member.Take_Out_Loan(loan);
+		member.takeOutLoan(loan);// Changed the method name according to changes made in member class
 		book.Borrow();
 		loans.put(loan.ID(), loan);
 		currentLoans.put(book.ID(), loan);
@@ -208,16 +208,16 @@ public class Library implements Serializable {// Changed the class name from 'li
 
 
 	public void dischargeLoan(Loan currentLoan, boolean isDamaged) {//Changed the method name to more meaningful By Sudeep Maharjan	
-		member member = currentLoan.Member();
+		Member member = currentLoan.Member();
 		book book  = currentLoan.Book();
 		
 		double overDueFine = CalculateOverDueFine(currentLoan);
-		member.Add_Fine(overDueFine);	
+		member.addFine(overDueFine);	// Changed the method name according to changes made in member class
 		
 		member.dischargeLoan(currentLoan);// Changed the method name 
 		book.Return(isDamaged);
 		if (isDamaged) {
-			member.Add_Fine(DAMAGE_FEE);
+			member.addFine(DAMAGE_FEE);// Changed the method name according to changes made in member class
 			damagedBooks.put(book.ID(), book);
 		}
 		currentLoan.DiScHaRgE();
