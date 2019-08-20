@@ -51,10 +51,10 @@ public class loan implements Serializable {
 
 		StringBuilder sb = new StringBuilder();
 		sb.append("Loan:  ").append(ID).append("\n")
-		  .append("  Borrower ").append(member.GeT_ID()).append(" : ")
-		  .append(member.Get_LastName()).append(", ").append(member.Get_FirstName()).append("\n")
-		  .append("  Book ").append(book.ID()).append(" : " )
-		  .append(book.TITLE()).append("\n")
+		  .append("  Borrower ").append(member.getId()).append(" : ")
+		  .append(member.getLastName()).append(", ").append(member.getFirstName()).append("\n")// Changed the method name of member class and book class by Sudeep maharjan
+		  .append("  Book ").append(book.getId()).append(" : " )
+		  .append(book.getTitle()).append("\n")
 		  .append("  DueDate: ").append(sdf.format(date)).append("\n")
 		  .append("  State: ").append(state);		
 		return sb.toString();
