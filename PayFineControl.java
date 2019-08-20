@@ -9,7 +9,7 @@ public class PayFineControl {
 
 
 	public PayFineControl() {
-		this.library = library.INSTANCE(); //changed LiBrArY to library
+		this.library = library.getInstance(); //changed LiBrArY to library
 		state = controlState.INITIALISED;  //changed StAtE to state and CONTROL_STATE to controlState
 	}
 	
