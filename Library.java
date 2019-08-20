@@ -47,7 +47,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 		loanId = 1;	// Changed the variable name to lowercase (camelback) by Sudeep Maharjan	
 	}
 
-	public static synchronized Library INSTANCE() {		
+	public static synchronized Library getInstance() {		
 		if (self == null) {
 			Path PATH = Paths.get(LIBRARY_FILE);			
 			if (Files.exists(PATH)) {	
@@ -67,7 +67,7 @@ public class Library implements Serializable {// Changed the class name from 'li
 	}
 
 	
-	public static synchronized void SAVE() {
+	public static synchronized void save() {
 		if (self != null) {
 			self.LOAN_DATE = Calendar.INSTANCE().Date();
 			try (ObjectOutputStream LoF = new ObjectOutputStream(new FileOutputStream(LIBRARY_FILE));) {
