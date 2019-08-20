@@ -18,7 +18,7 @@ public class FixBookUI {
 	}
 
 
-	public void Set_State(UiState state) { //Changed UI_STATE to UiState
+	public void setState(UiState state) { //Changed UI_STATE to UiState and Set_State to setState
 		this.state = state; //Changed StAtE to state
 	}
 
@@ -33,12 +33,12 @@ public class FixBookUI {
 			case READY:
 				String bookStr = input("Scan Book (<enter> completes): "); //changed Book_STR to bookStr
 				if (bookStr.length() == 0) { //changed Book_STR to bookStr
-					control.SCannING_COMplete();
+					control.scanningComplete(); //changed SCannING_COMplete to scanningComplete
 				}
 				else {
 					try {
 						int bookID = Integer.valueOf(bookStr).intValue(); //changed Book_ID to bookID and Book_STR to bookStr
-						control.Book_scanned(bookID); //changed Book_ID to bookID
+						control.bookScanned(bookID); //changed Book_ID to bookID and Book_scanned to bookScanned
 					}
 					catch (NumberFormatException e) {
 						output("Invalid bookId");
@@ -52,7 +52,7 @@ public class FixBookUI {
 				if (answer.toUpperCase().equals("Y")) { //changed AnS to answer
 					fix = true; //changed FiX to fix
 				}
-				control.FIX_Book(fix); //changed FiX to fix
+				control.fixBook(fix); //changed FiX to fix and FIX_Book to fixBook
 				break;
 								
 			case COMPLETED:
