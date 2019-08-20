@@ -40,7 +40,7 @@ public class BorrowBookControl {
 			throw new RuntimeException("BorrowBookControl: cannot call setUI except in INITIALISED state");
 		}
 		this.ui = ui;
-		this.ui.setState(BorrowBookUI.UI_STATE.READY); // change method Set_State() to setState()
+		this.ui.setState(BorrowBookUI.UiState.READY); // change method Set_State() to setState()
 		state = ControlState.READY;		
 	}
 
@@ -58,7 +58,7 @@ public class BorrowBookControl {
 		}
 		if (library.checkMemberCanBorrow(member)) {
 			pendingBooks = new ArrayList<>();
-			ui.setState(BorrowBookUI.UI_STATE.SCANNING); // method Set_State changed to setState
+			ui.setState(BorrowBookUI.UiState.SCANNING); // method Set_State changed to setState
 			state = ControlState.SCANNING; }
 		else {
 			ui.display("Member cannot borrow at this time"); // method Display changed to display
@@ -72,12 +72,12 @@ public class BorrowBookControl {
 		if (!state.equals(ControlState.SCANNING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call bookScanned except in SCANNING state");
 		}	
-		book = library.Book(bookId);
+		book = library.checkBook(bookId);
 		if (book == null) {
 			ui.display("Invalid bookId"); // method Display changed to display
 			return;
 		}
-		if (!book.AVAILABLE()) {
+		if (!book.isAvailable()) {
 			ui.display("Book cannot be borrowed"); // method Display changed to display
 			return;
 		}
@@ -87,7 +87,7 @@ public class BorrowBookControl {
 		for (Book pendingBook : pendingBooks) {
 			ui.display(pendingBook.toString()); // method Display changed to display
 		}
-		if (library.Loans_Remaining_For_Member(member) - pendingBooks.size() == 0) {
+		if (library.getLoansRemaining(member) - pendingBooks.size() == 0) {
 			ui.display("Loan limit reached"); // method Display changed to display
 			complete();
 		}
@@ -106,7 +106,7 @@ public class BorrowBookControl {
 				ui.display(pendingBook.toString()); // method Display changed to display
 			}
 			completed = new ArrayList<Loan>();
-			ui.setState(BorrowBookUI.UI_STATE.FINALISING); // method Set_State changed to setState
+			ui.setState(BorrowBookUI.UiState.FINALISING); // method Set_State changed to setState
 			state = ControlState.FINALISING;
 		}
 	}
@@ -119,20 +119,20 @@ public class BorrowBookControl {
 		// class name book changed to Book
 		// local variable B changed to pendingBook
 		for (Book pendingBook : pendingBooks) {
-			Loan loan = library.ISSUE_LAON(pendingBook, member); // class and variable naming changed
+			Loan loan = library.loanIssue(pendingBook, member); // class and variable naming changed
 			completed.add(loan);			
 		}
 		ui.display("Completed Loan Slip"); // method Display changed to display
 		for (Loan loan : completed) {
 			ui.display(loan.toString()); // method Display changed to display
 		}
-		ui.setState(BorrowBookUI.UI_STATE.COMPLETED); // method Set_State changed to setState
+		ui.setState(BorrowBookUI.UiState.COMPLETED); // method Set_State changed to setState
 		state = ControlState.COMPLETED;
 	}
 
 	
 	public void cancel() {
-		ui.setState(BorrowBookUI.UI_STATE.CANCELLED); // method Set_State changed to setState
+		ui.setState(BorrowBookUI.UiState.CANCELLED); // method Set_State changed to setState
 		state = ControlState.CANCELLED;
 	}
 	
