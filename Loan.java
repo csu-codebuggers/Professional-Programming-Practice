@@ -15,11 +15,11 @@ public class loan implements Serializable {
 
 	
 	public loan(int loanId, book book, member member, Date dueDate) {
-		this.ID = loanId;
-		this.B = book;
-		this.M = member;
-		this.D = dueDate;
-		this.state = LOAN_STATE.CURRENT;
+		this.id = loanId;// Changed the variable ID to id By Sudeep Maharjan
+		this.book = book;// Changed the variable B to book By Sudeep Maharjan
+		this.member = member;// Changed the variable M to member By Sudeep Maharjan
+		this.date = dueDate;// Changed the variable D to date By Sudeep Maharjan
+		this.state = LoanState.CURRENT;// Changed the enum variable LOAN_STATE to LoanState
 	}
 
 	
