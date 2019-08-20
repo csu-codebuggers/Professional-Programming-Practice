@@ -19,7 +19,7 @@ public class Book implements Serializable {
 		
 		this.callNo = callNo; // changed CALLNO to callNo
 		this.id = id;  // changed ID to id
-		this.State = STATE.AVAILABLE;
+		this.State = state.AVAILABLE;
 	}
 	
 	public String toString() {
@@ -33,8 +33,8 @@ public class Book implements Serializable {
 		return sb.toString();
 	}
 
-	public Integer ID() {
-		return ID;
+	public Integer id() { // changed ID to id
+		return id;	// changed ID to id
 	}
 
 	public String title() {
@@ -43,8 +43,8 @@ public class Book implements Serializable {
 
 
 	
-	public boolean AVAILABLE() {
-		return State == STATE.AVAILABLE;
+	public boolean isAvailable() {	//changed method AVAILABLE to isAvailable
+		return State == state.AVAILABLE; //changed STATE TO state
 	}
 
 	
