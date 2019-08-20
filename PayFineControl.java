@@ -35,13 +35,13 @@ public class PayFineControl {
 			return;
 		}
 		ui.display(member.toString()); //changed MeMbEr to member and Ui to ui and DiSplAY to display
-		Ui.Set_State(PayFineUI.uiState.PAYING);  //changed Ui to ui and UI_STATE to uiState
+		ui.setState(PayFineUI.uiState.PAYING);  //changed Ui to ui and UI_STATE to uiState and Set_State to setState
 		state = controlState.PAYING; //changed StAtE to state and CONTROL_STATE to controlState
 	}
 	
 	
 	public void cancel() { //changed CaNcEl to cancel
-		ui.Set_State(PayFineUI.uiState.CANCELLED);  //changed Ui to ui and UI_STATE to uiState
+		ui.setState(PayFineUI.uiState.CANCELLED);  //changed Ui to ui and UI_STATE to uiState and Set_State to setState
 		state = controlState.CANCELLED; //changed StAtE to state and CONTROL_STATE to controlState
 	}
 
@@ -55,7 +55,7 @@ public class PayFineControl {
 			ui.display(String.format("Change: $%.2f", change)); //changed ChAnGe to change and Ui to ui and DiSplAY to display
 		}
 		ui.display(member.toString()); //changed Ui to ui and MeMbEr to member and DiSplAY to display
-		ui.Set_State(PayFineUI.uiState.COMPLETED); //changed Ui to ui and UI_STATE to uiState
+		ui.setState(PayFineUI.uiState.COMPLETED); //changed Ui to ui and UI_STATE to uiState and Set_State to setState
 		state = controlState.COMPLETED;  //changed StAtE to state and CONTROL_STATE to controlState
 		return change;
 	}
