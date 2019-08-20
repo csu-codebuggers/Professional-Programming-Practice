@@ -2,20 +2,20 @@ import java.io.Serializable;
 
 
 @SuppressWarnings("serial")
-public class book implements Serializable {
+public class Book implements Serializable { // 
 	
 	private String title;  // changed to lowercase
 	private String author; // changed to lowercase
 	private String callNo; // matched as camelBlack format
 	private int id; // changed to lowercase
 	
-	private enum STATE { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };
-	private STATE State;
+	private enum State { AVAILABLE, ON_LOAN, DAMAGED, RESERVED }; //changed STATE to State
+	private State state; // changed State to state and STATE to State
 	
 	
 	public book(String author, String title, String callNo, int id) {
 		this.AUTHOR = author;
-		this.TITLE = title;
+		this.title = title;
 		
 		this.CALLNO = callNo;
 		this.ID = id;
@@ -25,7 +25,7 @@ public class book implements Serializable {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Book: ").append(ID).append("\n")
-		  .append("  Title:  ").append(TITLE).append("\n")
+		  .append("  title:  ").append(title).append("\n")
 		  .append("  Author: ").append(AUTHOR).append("\n")
 		  .append("  CallNo: ").append(CALLNO).append("\n")
 		  .append("  State:  ").append(State);
@@ -37,8 +37,8 @@ public class book implements Serializable {
 		return ID;
 	}
 
-	public String TITLE() {
-		return TITLE;
+	public String title() {
+		return title;
 	}
 
 
