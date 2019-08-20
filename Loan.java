@@ -24,25 +24,25 @@ public class loan implements Serializable {
 
 	
 	public void checkOverDue() {
-		if (state == LOAN_STATE.CURRENT &&
+		if (state == LoanState.CURRENT &&
 			Calendar.INSTANCE().Date().after(D)) {
-			this.state = LOAN_STATE.OVER_DUE;			
+			this.state = LoanState.OVER_DUE;//Changed the variable name from LOAN_STATE to LoanState by Sudeep Maharjan			
 		}
 	}
 
 	
 	public boolean OVer_Due() {
-		return state == LOAN_STATE.OVER_DUE;
+		return state == LoanState.OVER_DUE; // Changed the variable name from LOAN_STATE to LoanState By Sudeep Maharjan
 	}
 
 	
 	public Integer ID() {
-		return ID;
+		return id; // Changed the variable name from ID to id
 	}
 
 
 	public Date Get_Due_Date() {
-		return D;
+		return date; // Changed the variable name D to date by Sudeep Maharjan
 	}
 	
 	
@@ -62,17 +62,17 @@ public class loan implements Serializable {
 
 
 	public member Member() {
-		return M;
+		return member; //Changed the variable name from M to member by Sudeep Maharjan
 	}
 
 
 	public book Book() {
-		return B;
+		return book;//Changed the variable name from M to member by Sudeep Maharjan
 	}
 
 
 	public void DiScHaRgE() {
-		state = LOAN_STATE.DISCHARGED;		
+		state = LoanState.DISCHARGED;	//Changed the variable name from LOAN_STATE to member by Sudeep Maharjan	
 	}
 
 }
