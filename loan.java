@@ -5,13 +5,13 @@ import java.util.Date;
 @SuppressWarnings("serial")
 public class loan implements Serializable {
 	
-	public static enum LOAN_STATE { CURRENT, OVER_DUE, DISCHARGED };
+	public static enum LoanState { CURRENT, OVER_DUE, DISCHARGED }; // Changed the variable name of enum from LOAN_STATE to LoanState
 	
-	private int ID;
-	private book B;
-	private member M;
-	private Date D;
-	private LOAN_STATE state;
+	private int id;// Changed the variable name from ID to id
+	private Book book;// Change the class name to uppercase(book to Book) and variable name from B to book
+	private Member member; // Changed the class name to uppercase(member to Member) and variable name from M to member
+	private Date date; //Changed the class name from date to Date
+	private LoanState state;//Changed the variable name from LOAN_STATE to LoanState
 
 	
 	public loan(int loanId, book book, member member, Date dueDate) {
