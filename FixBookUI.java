@@ -14,7 +14,7 @@ public class FixBookUI {
 		this.control = control; //Changed CoNtRoL variable to control
 		input = new Scanner(System.in);
 		state = UiState.INITIALISED; //Changed UI_STATE to UiState and StAtE to state
-		control.Set_Ui(this); //Changed CoNtRoL variable to control
+		control.setUi(this); //Changed CoNtRoL variable to control and Set_Ui to setUi
 	}
 
 
@@ -23,7 +23,7 @@ public class FixBookUI {
 	}
 
 	
-	public void RuN() {
+	public void run() { //changed RuN to run
 		output("Fix Book Use Case UI\n");
 		
 		while (true) {
