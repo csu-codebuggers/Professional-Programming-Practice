@@ -25,7 +25,7 @@ public class loan implements Serializable {
 	
 	public void checkOverDue() {
 		if (state == LoanState.CURRENT &&
-			Calendar.INSTANCE().Date().after(D)) {
+			Calendar.INSTANCE().Date().after(date)) { //Changed the variable name from D to date by Sudeep Maharjan
 			this.state = LoanState.OVER_DUE;//Changed the variable name from LOAN_STATE to LoanState by Sudeep Maharjan			
 		}
 	}
@@ -51,11 +51,11 @@ public class loan implements Serializable {
 
 		StringBuilder sb = new StringBuilder();
 		sb.append("Loan:  ").append(ID).append("\n")
-		  .append("  Borrower ").append(M.GeT_ID()).append(" : ")
-		  .append(M.Get_LastName()).append(", ").append(M.Get_FirstName()).append("\n")
-		  .append("  Book ").append(B.ID()).append(" : " )
-		  .append(B.TITLE()).append("\n")
-		  .append("  DueDate: ").append(sdf.format(D)).append("\n")
+		  .append("  Borrower ").append(member.GeT_ID()).append(" : ")
+		  .append(member.Get_LastName()).append(", ").append(member.Get_FirstName()).append("\n")
+		  .append("  Book ").append(book.ID()).append(" : " )
+		  .append(book.TITLE()).append("\n")
+		  .append("  DueDate: ").append(sdf.format(date)).append("\n")
 		  .append("  State: ").append(state);		
 		return sb.toString();
 	}
