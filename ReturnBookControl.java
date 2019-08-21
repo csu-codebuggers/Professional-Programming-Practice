@@ -1,16 +1,16 @@
 public class ReturnBookControl {
 
 	private ReturnBookUI Ui;
-	private enum CONTROL_STATE { INITIALISED, READY, INSPECTING };
-	private CONTROL_STATE sTaTe;
+	private enum ControlState { INITIALISED, READY, INSPECTING }; //changed CONTROL_STATE to ControlState
+	private ControlState state; //Changed CONTROL_STATE TO ControlState and sTaTe to state
 	
-	private library lIbRaRy;
-	private loan CurrENT_loan;
+	private Library library; //changed library to Library and library
+	private Loan currentLoan; //Changed loan to Load and CurrENT_loan to currentLoan
 	
 
 	public ReturnBookControl() {
-		this.lIbRaRy = lIbRaRy.INSTANCE();
-		sTaTe = CONTROL_STATE.INITIALISED;
+		this.library = library.INSTANCE(); //changed lIbRaRy to library 
+		state = ControlState.INITIALISED; //changed sTaTe to state, CONTROL_STATE to ControlState
 	}
 	
 	
