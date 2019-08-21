@@ -39,9 +39,9 @@ public class ReturnBookControl {
 			return;
 		}		
 		currentLoan = library.loanByBookId(bookId);	//changed CurrENT_loan to currentLoan , lIbRaRy to library,Book_ID to bookId and LOAN_BY_BOOK_ID to loanByBookId
-		double Over_Due_Fine = 0.0;
-		if (CurrENT_loan.OVer_Due()) {
-			Over_Due_Fine = lIbRaRy.CalculateOverDueFine(CurrENT_loan);
+		double overDueFine = 0.0;   //changed Over_Due_Fine to overDueFine
+		if (currentLoan.overDue()) {//changed   CurrENT_loan to currentLoan and  OVer_Due to overDue
+			overDueFine  = library.calculateOverDueFine(currentLoan); //changed Over_Due_Fine to overDueFine, lIbRaRy to library, CalculateOverDueFine to calculateOverDueFine and CurrENT_loan to currentLoan
 		}
 		Ui.display("Inspecting");
 		Ui.display(CUR_book.toString());
