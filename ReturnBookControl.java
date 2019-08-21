@@ -15,7 +15,7 @@ public class ReturnBookControl {
 	
 	
 	public void setUi(ReturnBookUI ui) { //changed SET_UI to setUi
-		if (!state.equals(ContorlState.INITIALISED)) { //changed sTaTe to state and CONTROL_STATE to ControlState
+		if (!state.equals(ControlState.INITIALISED)) { //changed sTaTe to state and CONTROL_STATE to ControlState
 			throw new RuntimeException("ReturnBookControl: cannot call setUI except in INITIALISED state");
 		}	
 		this.ui = ui; //changed Ui to ui
@@ -51,26 +51,26 @@ public class ReturnBookControl {
 			ui.display(String.format("\nOverdue fine : $%.2f", overDueFine)); //changed Ui to ui and  Over_Due_Fine to overDueFine
 		}
 		ui.setState(ReturnBookUI.UI_STATE.INSPECTING); //changed Set_State to setState
-		state = ControlState.INSPECTING;	//changed sTaTe to state 	and CONTROL_STATE to ContorlState
+		state = ControlState.INSPECTING;	//changed sTaTe to state 	and CONTROL_STATE to ControlState
 	}
 
 
 	public void scanningComplete() {     //changed Scanning_Complete to scanningComplete
-		if (!sTaTe.equals(CONTROL_STATE.READY)) {
+		if (!state.equals(ControlState.READY)) { //changed sTaTe to state and  CONTROL_STATE to ControlState 
 			throw new RuntimeException("ReturnBookControl: cannot call scanningComplete except in READY state");
 		}	
-		Ui.Set_State(ReturnBookUI.UI_STATE.COMPLETED);		
+		ui.setState(ReturnBookUI.UI_STATE.COMPLETED); //changed Set_State to setState		
 	}
 
 
-	public void Discharge_loan(boolean isDamaged) {
-		if (!sTaTe.equals(CONTROL_STATE.INSPECTING)) {
+	public void dischargeLoan(boolean isDamaged) { //changed Discharge_loan to dischargeLoan
+		if (!state.equals(ControlState.INSPECTING)) { //changed sTaTe to state and CONTROL_STATE to ControlState
 			throw new RuntimeException("ReturnBookControl: cannot call dischargeLoan except in INSPECTING state");
 		}	
-		lIbRaRy.Discharge_loan(CurrENT_loan, isDamaged);
-		CurrENT_loan = null;
-		Ui.Set_State(ReturnBookUI.UI_STATE.READY);
-		sTaTe = CONTROL_STATE.READY;				
+		library.dischargeLoan(currentLoan, isDamaged); //changed lIbRaRy to library, Discharge_loan to dischargeLoan and CurrENT_loan to currentLoan
+		currentLoan = null; //changed CurrENT_loan to currentLoan
+		ui.setState(ReturnBookUI.UI_STATE.READY); // changed Ui to ui, Set_State to setState
+		state = ControlState.READY;		 //changed sTaTe to state	and CONTROL_STATE to ControlState	
 	}
 
 
