@@ -41,7 +41,7 @@ public class loan implements Serializable {
 	}
 
 
-	public Date Get_Due_Date() { //Changed the method name Get_Due_Date to getDueDate by Sudeep Maharjan
+	public Date getDueDate() { //Changed the method name Get_Due_Date to getDueDate by Sudeep Maharjan
 		return date; // Changed the variable name D to date by Sudeep Maharjan
 	}
 	
@@ -50,7 +50,7 @@ public class loan implements Serializable {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 		StringBuilder sb = new StringBuilder();
-		sb.append("Loan:  ").append(ID).append("\n")
+		sb.append("  Loan:  ").append(ID).append("\n") //Fixed the print format
 		  .append("  Borrower ").append(member.getId()).append(" : ")
 		  .append(member.getLastName()).append(", ").append(member.getFirstName()).append("\n")// Changed the method name of member class and book class by Sudeep maharjan
 		  .append("  Book ").append(book.getId()).append(" : " )
