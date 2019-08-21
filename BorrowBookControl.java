@@ -52,7 +52,7 @@ public class BorrowBookControl {
 			throw new RuntimeException("BorrowBookControl: cannot call cardSwiped except in READY state");
 		}
 		member = library.checkMember(memberId);
-		if ( member == null) {
+		if (member == null) {
 			ui.display("Invalid memberId"); // method Display changed to display
 			return;
 		}
@@ -62,7 +62,9 @@ public class BorrowBookControl {
 			state = ControlState.SCANNING; }
 		else {
 			ui.display("Member cannot borrow at this time"); // method Display changed to display
-			ui.setState(BorrowBookUI.UI_STATE.RESTRICTED); // method Set_State changed to setState
+			// method Set_State changed to setState
+			// enum UI_STATE changed to UiState
+			ui.setState(BorrowBookUI.UiState.RESTRICTED); 
 		}
 	}
 	
