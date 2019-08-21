@@ -1,6 +1,6 @@
 public class ReturnBookControl {
 
-	private ReturnBookUI Ui;
+	private ReturnBookUI ui; //changed Ui to ui
 	private enum ControlState { INITIALISED, READY, INSPECTING }; //changed CONTROL_STATE to ControlState
 	private ControlState state; //Changed CONTROL_STATE TO ControlState and sTaTe to state
 	
@@ -19,7 +19,7 @@ public class ReturnBookControl {
 			throw new RuntimeException("ReturnBookControl: cannot call setUI except in INITIALISED state");
 		}	
 		this.ui = ui; //changed Ui to ui
-		ui.Set_State(ReturnBookUI.UI_STATE.READY);
+		ui.setState(ReturnBookUI.UI_STATE.READY); //changed Set_State to setState
 		state = ControlState.READY; //changed sTaTe to state and CONTROL_STATE to ControlState		
 	}
 
@@ -31,11 +31,11 @@ public class ReturnBookControl {
 		book CUR_book = library.Book(bookId);	//changed Book_ID to bookId and lIbRaRy to library
 		
 		if (CUR_book == null) {
-			Ui.display("Invalid Book Id");
+			ui.display("Invalid Book Id");
 			return;
 		}
 		if (!CUR_book.onLoan()) {	//changed On_loan to onLoan
-			Ui.display("Book has not been borrowed");
+			ui.display("Book has not been borrowed");
 			return;
 		}		
 		currentLoan = library.loanByBookId(bookId);	//changed CurrENT_loan to currentLoan , lIbRaRy to library,Book_ID to bookId and LOAN_BY_BOOK_ID to loanByBookId
@@ -43,15 +43,15 @@ public class ReturnBookControl {
 		if (currentLoan.overDue()) {//changed   CurrENT_loan to currentLoan and  OVer_Due to overDue
 			overDueFine  = library.calculateOverDueFine(currentLoan); //changed Over_Due_Fine to overDueFine, lIbRaRy to library, CalculateOverDueFine to calculateOverDueFine and CurrENT_loan to currentLoan
 		}
-		Ui.display("Inspecting");
-		Ui.display(CUR_book.toString());
-		Ui.display(CurrENT_loan.toString());
+		ui.display("Inspecting");        //changed Ui to ui
+		ui.display(CUR_book.toString());
+		ui.display(currentLoan.toString()); //changed CurrENT_loan to currentLoan
 		
-		if (CurrENT_loan.OVer_Due()) {
-			Ui.display(String.format("\nOverdue fine : $%.2f", Over_Due_Fine));
+		if (currentLoan.overDue()) { //changed CurrENT_loan to currentLoan and OVer_Due to overDue
+			ui.display(String.format("\nOverdue fine : $%.2f", overDueFine)); //changed Ui to ui and  Over_Due_Fine to overDueFine
 		}
-		Ui.Set_State(ReturnBookUI.UI_STATE.INSPECTING);
-		sTaTe = CONTROL_STATE.INSPECTING;		
+		ui.setState(ReturnBookUI.UI_STATE.INSPECTING); //changed Set_State to setState
+		state = ControlState.INSPECTING;	//changed sTaTe to state 	and CONTROL_STATE to ContorlState
 	}
 
 
