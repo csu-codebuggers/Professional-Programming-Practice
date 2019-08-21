@@ -48,19 +48,19 @@ public class Book implements Serializable {
 	}
 
 	
-	public boolean On_loan() {
-		return State == STATE.ON_LOAN;
+	public boolean onLoan() { //changed ON_LOAN to onLoan
+		return State == STATE.onLoan;
 	}
 
 	
-	public boolean IS_Damaged() {
-		return State == STATE.DAMAGED;
+	public boolean isDamaged() {   //changed Is_Damaged to isDamaged
+		return State == STATE.isDamaged; //changed DAMAGED to isDamaged
 	}
 
 	
-	public void Borrow() {
+	public void borrow() { //changed Borrow to borrow
 		if (State.equals(STATE.AVAILABLE)) {
-			State = STATE.ON_LOAN;
+			State = state.onLoan; //changed STATE to state and ONLOAN to onLoan
 		}
 		else {
 			throw new RuntimeException(String.format("Book: cannot borrow while book is in state: %s", State));
@@ -69,13 +69,13 @@ public class Book implements Serializable {
 	}
 
 
-	public void Return(boolean DAMAGED) {
-		if (State.equals(STATE.ON_LOAN)) {
-			if (DAMAGED) {
-				State = STATE.DAMAGED;
+	public void Return(boolean isDamaged) { // changed DAMAGED to isDamaged
+		if (State.equals(state.onLoan)) {// changed STATE.ON_LOAN to state.onLoan
+			if (isDamaged) { //changed DAMAGED to isDamaged
+				State =  state.isDamaged; //changed STATE.DAMAGED
 			}
 			else {
-				State = STATE.AVAILABLE;
+				State = state.isAvailable; //changed STATE.AVAILABLE to state.isAvailable
 			}
 		}
 		else {
@@ -84,9 +84,9 @@ public class Book implements Serializable {
 	}
 
 	
-	public void Repair() {
-		if (State.equals(STATE.DAMAGED)) {
-			State = STATE.AVAILABLE;
+	public void repair() { // changed Repair to repair
+		if (State.equals(state.isDamaged)) { //changed STATE.DAMAGED to state.isDamaged
+			State = state.isAvailable; //changed STATE.AVAILABLE to state.isAvailable
 		}
 		else {
 			throw new RuntimeException(String.format("Book: cannot repair while book is in state: %s", State));
