@@ -1,17 +1,16 @@
 import java.util.Scanner;
 
 
-public class ReturnBookUI {
+public class ReturnBookUi { // Changed class ReturnBookUi in camelBlack formate
 
-	public static enum UI_STATE { INITIALISED, READY, INSPECTING, COMPLETED };
-
-	private ReturnBookControl CoNtRoL;
+	public static enum UiState { INITIALISED, READY, INSPECTING, COMPLETED }; //changed UI_STATE to UiState
+	private ReturnBookControl control; //changed CoNtRoL to co
 	private Scanner input;
-	private UI_STATE StATe;
+	private UiState state; // changed UI_STATE to UiState and StATe to state
 
 	
-	public ReturnBookUI(ReturnBookControl control) {
-		this.CoNtRoL = control;
+	public ReturnBookUi(ReturnBookControl control) { // changed class name 
+		this.control = control; //changed CoNtRoL to control
 		input = new Scanner(System.in);
 		StATe = UI_STATE.INITIALISED;
 		control.Set_UI(this);
