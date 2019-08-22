@@ -30,12 +30,12 @@ public class ReturnBookUi { // Changed class ReturnBookUi in camelBlack formate
 			case READY:
 				String bookStr = input("Scan Book (<enter> completes): "); //changed Book_STR to bookStr
 				if (bookStr.length() == 0) { // changed Book_STR to bookStr
-					control.Scanning_Complete();  //changed CoNtRoL to control
+					control.scanningComplete();  //changed CoNtRoL to control and Scanning_Complete to scanningComplete
 				}
 				else {
 					try {
-						int Book_Id = Integer.valueOf(Book_STR).intValue();
-						CoNtRoL.Book_scanned(Book_Id);
+						int bookId = Integer.valueOf(bookStr).intValue(); //changed Book_Id to bookId and Book_STR to bookStr
+						control.bookScanned(bookId); //changed CoNtRoL to control, Book_scanned to bookScanned  and Book_Id to bookId
 					}
 					catch (NumberFormatException e) {
 						output("Invalid bookId");
@@ -45,11 +45,11 @@ public class ReturnBookUi { // Changed class ReturnBookUi in camelBlack formate
 				
 			case INSPECTING:
 				String ans = input("Is book damaged? (Y/N): ");
-				boolean Is_Damaged = false;
+				boolean isDamaged = false; //changed Is_Damaged to isDamaged
 				if (ans.toUpperCase().equals("Y")) {					
-					Is_Damaged = true;
+					isDamaged = true; // changed Is_Damaged to isDamaged
 				}
-				CoNtRoL.Discharge_loan(Is_Damaged);
+				control.dischargeLoan(isDamaged); //changed CoNtRoL to control, Is_Damaged to isDamaged and Discharge_loan to dischargeLoan
 			
 			case COMPLETED:
 				output("Return processing complete");
