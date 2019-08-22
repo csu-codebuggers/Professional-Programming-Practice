@@ -57,7 +57,7 @@ public class ReturnBookUi { // Changed class ReturnBookUi in camelBlack formate
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("ReturnBookUI : unhandled state :" + StATe);			
+				throw new RuntimeException("ReturnBookUI : unhandled state :" + state); //changed StATe to state			
 			}
 		}
 	}
@@ -78,8 +78,8 @@ public class ReturnBookUi { // Changed class ReturnBookUi in camelBlack formate
 		output(object);
 	}
 	
-	public void Set_State(UI_STATE state) {
-		this.StATe = state;
+	public void setState ( uiState state) { //changed Set_State to setState and UI_STATE 
+		this.state = state; // changed StATe to state
 	}
 
 	
