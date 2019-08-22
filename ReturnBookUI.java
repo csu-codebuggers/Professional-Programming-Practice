@@ -12,25 +12,25 @@ public class ReturnBookUi { // Changed class ReturnBookUi in camelBlack formate
 	public ReturnBookUi(ReturnBookControl control) { // changed class name 
 		this.control = control; //changed CoNtRoL to control
 		input = new Scanner(System.in);
-		StATe = UI_STATE.INITIALISED;
-		control.Set_UI(this);
+		state = UiState.INITIALISED; //changed StATe to state and UI_STATE to UiState
+		control.setUi(this); //changed Set_UI to setUi
 	}
 
 
-	public void RuN() {		
+	public void run() {	  //changed RuN to run	
 		output("Return Book Use Case UI\n");
 		
 		while (true) {
 			
-			switch (StATe) {
-			
+			switch (state) {   //changed StATe to state
+ 			
 			case INITIALISED:
 				break;
 				
 			case READY:
-				String Book_STR = input("Scan Book (<enter> completes): ");
-				if (Book_STR.length() == 0) {
-					CoNtRoL.Scanning_Complete();
+				String bookStr = input("Scan Book (<enter> completes): "); //changed Book_STR to bookStr
+				if (bookStr.length() == 0) { // changed Book_STR to bookStr
+					control.Scanning_Complete();  //changed CoNtRoL to control
 				}
 				else {
 					try {
