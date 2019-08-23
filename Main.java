@@ -40,8 +40,8 @@ public class Main {
 	public static void main(String[] args) {		
 		try {			
 			in = new Scanner(System.in); //changed IN to in
-			lib = Library.INSTANCE(); //changed LIB to lib and library to Library
-			cal = Calendar.INSTANCE(); //changed CAL to cal
+			lib = Library.getInstance(); //changed LIB to lib and library to Library and INSTANCE to getInstance
+			cal = Calendar.getInstance(); //changed CAL to cal and INSTANCE to getInstance
 			sdf = new SimpleDateFormat("dd/MM/yyyy"); //Changed SDF to sdf
 	
 			for (member m : lib.members//changed LIB to lib and MEMBERS to members
@@ -127,7 +127,7 @@ public class Main {
 
 	private static void currentLoans() { //changed CURRENT_LOANS to currentLoans
 		output("");
-		for (loan loan : lib.CurrentLoans()) { //changed LIB to lib
+		for (loan loan : lib.currentLoans()) { //changed LIB to lib and CurrentLoans to currentLoans
 			output(loan + "\n");
 		}		
 	}
@@ -185,7 +185,7 @@ public class Main {
 		String author = input("Enter author: "); //changed A to author
 		String title  = input("Enter title: "); //changed T to title
 		String call = input("Enter call number: "); //changed C to call
-		book book = lib.Add_book(author, title, call); //changed LIB to lib and B to book and A to author and T to title and C to call
+		book book = lib.addBook(author, title, call); //changed LIB to lib and B to book and A to author and T to title and C to call and Add_book to addBook
 		output("\n" + book + "\n"); //changed B to book
 		
 	}
@@ -197,7 +197,7 @@ public class Main {
 			String firstName  = input("Enter first name: "); //changed FN to firstName
 			String email = input("Enter email: "); //changed EM to email
 			int phone = Integer.valueOf(input("Enter phone number: ")).intValue(); //changed PN to phone
-			member member = lib.Add_mem(lastName, firstName, email, phone); //changed LIB to lib and LN to lastName and FN to firstName and EM to email and PN to phone and M to member
+			member member = lib.addMember(lastName, firstName, email, phone); //changed LIB to lib and LN to lastName and FN to firstName and EM to email and PN to phone and M to member and Add_mem to addMember
 			output("\n" + member + "\n"); //changed M to member
 			
 		} catch (NumberFormatException e) {

@@ -14,16 +14,16 @@ public class FixBookUI {
 		this.control = control; //Changed CoNtRoL variable to control
 		input = new Scanner(System.in);
 		state = UiState.INITIALISED; //Changed UI_STATE to UiState and StAtE to state
-		control.Set_Ui(this); //Changed CoNtRoL variable to control
+		control.setUi(this); //Changed CoNtRoL variable to control and Set_Ui to setUi
 	}
 
 
-	public void Set_State(UiState state) { //Changed UI_STATE to UiState
+	public void setState(UiState state) { //Changed UI_STATE to UiState and Set_State to setState
 		this.state = state; //Changed StAtE to state
 	}
 
 	
-	public void RuN() {
+	public void run() { //changed RuN to run
 		output("Fix Book Use Case UI\n");
 		
 		while (true) {
@@ -31,14 +31,14 @@ public class FixBookUI {
 			switch (state) { //Changed StAtE to state
 			
 			case READY:
-				String Book_STR = input("Scan Book (<enter> completes): ");
-				if (Book_STR.length() == 0) {
-					control.SCannING_COMplete();
+				String bookStr = input("Scan Book (<enter> completes): "); //changed Book_STR to bookStr
+				if (bookStr.length() == 0) { //changed Book_STR to bookStr
+					control.scanningComplete(); //changed SCannING_COMplete to scanningComplete
 				}
 				else {
 					try {
-						int Book_ID = Integer.valueOf(Book_STR).intValue();
-						control.Book_scanned(Book_ID);
+						int bookID = Integer.valueOf(bookStr).intValue(); //changed Book_ID to bookID and Book_STR to bookStr
+						control.bookScanned(bookID); //changed Book_ID to bookID and Book_scanned to bookScanned
 					}
 					catch (NumberFormatException e) {
 						output("Invalid bookId");
@@ -47,12 +47,12 @@ public class FixBookUI {
 				break;	
 				
 			case FIXING:
-				String AnS = input("Fix Book? (Y/N) : ");
-				boolean FiX = false;
-				if (AnS.toUpperCase().equals("Y")) {
-					FiX = true;
+				String answer = input("Fix Book? (Y/N) : "); //changed AnS to answer
+				boolean fix = false; //changed FiX to fix
+				if (answer.toUpperCase().equals("Y")) { //changed AnS to answer
+					fix = true; //changed FiX to fix
 				}
-				control.FIX_Book(FiX);
+				control.fixBook(fix); //changed FiX to fix and FIX_Book to fixBook
 				break;
 								
 			case COMPLETED:
