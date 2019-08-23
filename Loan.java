@@ -25,23 +25,23 @@ public class loan implements Serializable {
 	
 	public void checkOverDue() {
 		if (state == LoanState.CURRENT &&
-			Calendar.INSTANCE().Date().after(date)) { //Changed the variable name from D to date by Sudeep Maharjan
+			Calendar.getInstance().Date().after(date)) { //Changed the variable name from D to date by Sudeep Maharjan and changed the variable name from INSTANCE to getInstance from calender class
 			this.state = LoanState.OVER_DUE;//Changed the variable name from LOAN_STATE to LoanState by Sudeep Maharjan			
 		}
 	}
 
 	
-	public boolean OVer_Due() {
+	public boolean overDue() { //Changed the method name from OVer_Due to overDue by Sudeep Maharjan
 		return state == LoanState.OVER_DUE; // Changed the variable name from LOAN_STATE to LoanState By Sudeep Maharjan
 	}
 
 	
-	public Integer ID() {
+	public Integer getId() { //Changed the method name from ID to getId
 		return id; // Changed the variable name from ID to id
 	}
 
 
-	public Date Get_Due_Date() {
+	public Date getDueDate() { //Changed the method name Get_Due_Date to getDueDate by Sudeep Maharjan
 		return date; // Changed the variable name D to date by Sudeep Maharjan
 	}
 	
@@ -50,28 +50,28 @@ public class loan implements Serializable {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 		StringBuilder sb = new StringBuilder();
-		sb.append("Loan:  ").append(ID).append("\n")
-		  .append("  Borrower ").append(member.GeT_ID()).append(" : ")
-		  .append(member.Get_LastName()).append(", ").append(member.Get_FirstName()).append("\n")
-		  .append("  Book ").append(book.ID()).append(" : " )
-		  .append(book.TITLE()).append("\n")
+		sb.append("  Loan:  ").append(ID).append("\n") //Fixed the print format
+		  .append("  Borrower ").append(member.getId()).append(" : ")
+		  .append(member.getLastName()).append(", ").append(member.getFirstName()).append("\n")// Changed the method name of member class and book class by Sudeep maharjan
+		  .append("  Book ").append(book.getId()).append(" : " )
+		  .append(book.getTitle()).append("\n")
 		  .append("  DueDate: ").append(sdf.format(date)).append("\n")
 		  .append("  State: ").append(state);		
 		return sb.toString();
 	}
 
 
-	public member Member() {
+	public member getMember() { //Changed the method name from Member to getMember
 		return member; //Changed the variable name from M to member by Sudeep Maharjan
 	}
 
 
-	public book Book() {
+	public book getBook() { //Changed the method name from Book to getBook
 		return book;//Changed the variable name from M to member by Sudeep Maharjan
 	}
 
 
-	public void DiScHaRgE() {
+	public void discharge() { //Changed the method name from DiScHaRgE to discharge 
 		state = LoanState.DISCHARGED;	//Changed the variable name from LOAN_STATE to member by Sudeep Maharjan	
 	}
 
