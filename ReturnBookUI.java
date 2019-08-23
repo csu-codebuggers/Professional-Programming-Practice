@@ -78,7 +78,7 @@ public class ReturnBookUi { // Changed class ReturnBookUi in camelBlack formate
 		output(object);
 	}
 	
-	public void setState ( uiState state) { //changed Set_State to setState and UI_STATE 
+	public void setState ( uiState state) { //changed Set_State to setState and UI_STATE to uiState
 		this.state = state; // changed StATe to state
 	}
 
